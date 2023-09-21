@@ -35,7 +35,7 @@ public class Player : MonoBehaviour {
         var move = _actionMove.ReadValue<float>();
         if ((_move == 0f && move != 0f)
             || (move == 0f && _move != 0f)) {
-            _animator.SetBool(HashIsWalking, move == 0f);
+            _animator.SetBool(HashIsWalking, move != 0f);
         }
 
         _move = move;
