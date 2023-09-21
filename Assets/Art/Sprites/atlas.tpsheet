@@ -1,0 +1,23 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# https://assetstore.unity.com/packages/tools/sprite-management/texturepacker-importer-16641
+#
+# created with Free texture packer v0.6.7
+# http://free-tex-packer.com
+#
+:format=40300
+:texture=atlas.png
+:size=80x18
+:pivotpoints=enabled
+:borders=disabled
+
+characters-avocado-walk-2;1;1;16;16; 0.5;0.5; 0;0;0;0
+characters-avocado-idle-1;19;1;14;16; 0.5;0.5; 0;0;0;0
+characters-avocado-idle-2;35;1;14;16; 0.5;0.5; 0;0;0;0
+characters-avocado-walk-4;51;1;12;16; 0.5;0.5; 0;0;0;0
+characters-avocado-idle-3;65;2;14;15; 0.5;0.5; 0;0;0;0
+characters-avocado-walk-1;19;1;14;16; 0.5;0.5; 0;0;0;0
+characters-avocado-walk-3;19;1;14;16; 0.5;0.5; 0;0;0;0
+characters-avocado-idle-4;35;1;14;16; 0.5;0.5; 0;0;0;0
