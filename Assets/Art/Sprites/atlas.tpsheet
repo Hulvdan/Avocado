@@ -8,18 +8,18 @@
 # http://free-tex-packer.com
 #
 :format=40300
-:texture=atlas.png
-:size=18x238
+:texture=Atlas.png
+:size=18x256
 :pivotpoints=enabled
 :borders=disabled
 
-characters-avocado-idle-1;1;91;16;16; 0.5;0.5; 0;0;0;0
-characters-avocado-idle-2;1;73;16;16; 0.5;0.5; 0;0;0;0
-characters-avocado-idle-3;1;55;16;16; 0.5;0.5; 0;0;0;0
-characters-avocado-idle-4;1;73;16;16; 0.5;0.5; 0;0;0;0
-characters-avocado-walk-1;1;91;16;16; 0.5;0.5; 0;0;0;0
-characters-avocado-walk-2;1;37;16;16; 0.5;0.5; 0;0;0;0
-characters-avocado-walk-3;1;91;16;16; 0.5;0.5; 0;0;0;0
-characters-avocado-walk-4;1;19;16;16; 0.5;0.5; 0;0;0;0
-other-background;1;109;16;128; 0.5;0.5; 0;0;0;0
-terrain-dirt;1;1;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoIdle1;1;109;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoIdle2;1;91;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoIdle3;1;73;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoIdle4;1;91;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoWalk1;1;55;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoWalk2;1;37;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoWalk3;1;55;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoWalk4;1;19;16;16; 0.5;0.5; 0;0;0;0
+Other-Background;1;127;16;128; 0.5;0.5; 0;0;0;0
+Terrain-Dirt;1;1;16;16; 0.5;0.5; 0;0;0;0

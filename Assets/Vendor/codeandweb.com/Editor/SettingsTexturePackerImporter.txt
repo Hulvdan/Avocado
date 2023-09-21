@@ -1,9 +1,9 @@
 version: 2
 tpsheetFileNames:
-- Assets/Art/Sprites/atlas.tpsheet
+- Assets/Art/Sprites/Atlas.tpsheet
 - Assets/codeandweb.com/Example/SpriteSheet/sprites.tpsheet
 textureFileNames:
-- Assets/Art/Sprites/atlas.png
+- Assets/Art/Sprites/Atlas.png
 - Assets/codeandweb.com/Example/SpriteSheet/sprites.png
 normalmapFileNames:
 - 

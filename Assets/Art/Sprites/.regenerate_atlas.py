@@ -3,12 +3,12 @@ import os
 
 def regenerate_atlas():
     print("1. Regenerating atlas...")
-    os.system(" ".join(["free-tex-packer-cli", "--project", ".atlas.ftpp"]))
+    os.system(" ".join(["free-tex-packer-cli", "--project", ".Atlas.ftpp"]))
 
 
 def update_atlas_data():
     print("2. Updating atlas data...")
-    with open("atlas.tpsheet") as in_file:
+    with open("Atlas.tpsheet") as in_file:
         data = in_file.readlines()
 
     beginning_lines = []
@@ -27,7 +27,7 @@ def update_atlas_data():
 
     updated_lines.sort()
 
-    with open("atlas.tpsheet", "w") as out_file:
+    with open("Atlas.tpsheet", "w") as out_file:
         out_file.write("".join(beginning_lines))
         out_file.write("".join(updated_lines))
 

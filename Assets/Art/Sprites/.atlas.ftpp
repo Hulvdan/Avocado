@@ -8,7 +8,7 @@
     "C:/Users/user/dev/_unity/Avocado/Assets/Art/Sprites/.Original"
   ],
   "packOptions": {
-    "textureName": "atlas",
+    "textureName": "Atlas",
     "textureFormat": "png",
     "removeFileExtension": true,
     "prependFolderName": true,
