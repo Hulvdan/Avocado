@@ -303,7 +303,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &225358441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +316,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20d0109fb30482cbdaf1364a5bb9a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seedProjectile: {fileID: 929984044553519524, guid: 62e5e9331495e084f9bc19f27cc9f7fc, type: 3}
+  seedSpawnOffsetX: 0
+  seedSpawnOffsetY: 0
+  seedSpawnForceX: 10
+  seedSpawnForceY: 1
+  avocadoIdleAnimationClip: {fileID: 7400000, guid: 7270500ed9efad746a1d7c77336fa2e0, type: 2}
+  avocadoWalkAnimationClip: {fileID: 7400000, guid: ab90f6fc020e7814f9fa466553e8752d, type: 2}
+  avocadoIdleNoSeedAnimationClip: {fileID: 7400000, guid: b1e5f439ceb7c2a42bdcd56317e6c133, type: 2}
+  avocadoWalkNoSeedAnimationClip: {fileID: 7400000, guid: d242f5bcb2d96a340a50b55fa756bc63, type: 2}
   inputActionAsset: {fileID: -944628639613478452, guid: 519775cb49cefde43bf7dbd95a879ee1, type: 3}
   movementSpeed: 0.08
 --- !u!1 &282051882

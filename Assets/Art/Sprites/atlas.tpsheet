@@ -9,17 +9,34 @@
 #
 :format=40300
 :texture=Atlas.png
-:size=18x238
+:size=18x461
 :pivotpoints=enabled
 :borders=disabled
 
-Characters-AvocadoIdle1;1;91;16;16; 0.5;0.5; 0;0;0;0
-Characters-AvocadoIdle2;1;73;16;16; 0.5;0.5; 0;0;0;0
-Characters-AvocadoIdle3;1;55;16;16; 0.5;0.5; 0;0;0;0
-Characters-AvocadoIdle4;1;73;16;16; 0.5;0.5; 0;0;0;0
-Characters-AvocadoWalk1;1;91;16;16; 0.5;0.5; 0;0;0;0
-Characters-AvocadoWalk2;1;37;16;16; 0.5;0.5; 0;0;0;0
-Characters-AvocadoWalk3;1;91;16;16; 0.5;0.5; 0;0;0;0
-Characters-AvocadoWalk4;1;19;16;16; 0.5;0.5; 0;0;0;0
-Other-Background;1;109;16;128; 0.5;0.5; 0;0;0;0
-Terrain-Dirt;1;1;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoIdle1;1;314;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoIdle2;1;296;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoIdle3;1;278;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoIdle4;1;296;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoIdleNoSeed1;1;260;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoIdleNoSeed2;1;242;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoIdleNoSeed3;1;224;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoIdleNoSeed4;1;242;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoThrow1;1;314;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoThrow2;1;206;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoThrow3;1;188;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoThrow4;1;170;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoThrow5;1;152;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoThrow6;1;134;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoThrow7;1;116;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoThrow8;1;98;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoWalk1;1;314;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoWalk2;1;80;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoWalk3;1;314;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoWalk4;1;62;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoWalkNoSeed1;1;260;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoWalkNoSeed2;1;44;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoWalkNoSeed3;1;260;16;16; 0.5;0.5; 0;0;0;0
+Characters-AvocadoWalkNoSeed4;1;26;16;16; 0.5;0.5; 0;0;0;0
+Other-Background;1;332;16;128; 0.5;0.5; 0;0;0;0
+Other-Seed;1;1;5;5; 0.5;0.5; 0;0;0;0
+Terrain-Dirt;1;8;16;16; 0.5;0.5; 0;0;0;0
