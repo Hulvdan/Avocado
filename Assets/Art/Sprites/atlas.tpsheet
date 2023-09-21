@@ -9,17 +9,17 @@
 #
 :format=40300
 :texture=atlas.png
-:size=18x237
+:size=18x238
 :pivotpoints=enabled
 :borders=disabled
 
-other-background;1;108;16;128; 0.5;0.5; 0;0;0;0
-characters-avocado-walk-2;1;90;16;16; 0.5;0.5; 0;0;0;0
-terrain-dirt;1;72;16;16; 0.5;0.5; 0;0;0;0
-characters-avocado-idle-1;1;54;14;16; 0.5;0.5; 0;0;0;0
-characters-avocado-idle-2;1;36;14;16; 0.5;0.5; 0;0;0;0
-characters-avocado-walk-4;1;18;12;16; 0.5;0.5; 0;0;0;0
-characters-avocado-idle-3;1;1;14;15; 0.5;0.5; 0;0;0;0
-characters-avocado-walk-1;1;54;14;16; 0.5;0.5; 0;0;0;0
-characters-avocado-walk-3;1;54;14;16; 0.5;0.5; 0;0;0;0
-characters-avocado-idle-4;1;36;14;16; 0.5;0.5; 0;0;0;0
+characters-avocado-idle-1;1;91;16;16; 0.5;0.5; 0;0;0;0
+characters-avocado-idle-2;1;73;16;16; 0.5;0.5; 0;0;0;0
+characters-avocado-idle-3;1;55;16;16; 0.5;0.5; 0;0;0;0
+characters-avocado-idle-4;1;73;16;16; 0.5;0.5; 0;0;0;0
+characters-avocado-walk-1;1;91;16;16; 0.5;0.5; 0;0;0;0
+characters-avocado-walk-2;1;37;16;16; 0.5;0.5; 0;0;0;0
+characters-avocado-walk-3;1;91;16;16; 0.5;0.5; 0;0;0;0
+characters-avocado-walk-4;1;19;16;16; 0.5;0.5; 0;0;0;0
+other-background;1;109;16;128; 0.5;0.5; 0;0;0;0
+terrain-dirt;1;1;16;16; 0.5;0.5; 0;0;0;0
