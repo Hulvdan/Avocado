@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4909278891996140517}
   - component: {fileID: 69700772531226185}
   - component: {fileID: 8483948711601807566}
+  - component: {fileID: 7475175563058951577}
   m_Layer: 3
   m_Name: SeedProjectile
-  m_TagString: Untagged
+  m_TagString: Seed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,3 +159,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7475175563058951577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929984044553519524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5049ed2fceaf24741b565bde9ceb2965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setToLayerMask:
+    serializedVersion: 2
+    m_Bits: 64

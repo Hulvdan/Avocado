@@ -63,19 +63,20 @@ public class Player : MonoBehaviour {
 
     Animator _animator;
     AnimatorOverrideController _animatorOverrideController;
+
+    AnimationClipOverrides _clipOverrides;
     bool _hasSeed = true;
     InputActionMap _inputMapGameplay;
     float _move;
 
     bool _needToThrow;
-    AnimationClipOverrides clipOverrides;
 
     void Start() {
         _animator = GetComponent<Animator>();
         _animatorOverrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);
 
-        clipOverrides = new AnimationClipOverrides(_animatorOverrideController.overridesCount);
-        _animatorOverrideController.GetOverrides(clipOverrides);
+        _clipOverrides = new AnimationClipOverrides(_animatorOverrideController.overridesCount);
+        _animatorOverrideController.GetOverrides(_clipOverrides);
 
         _animator.runtimeAnimatorController = _animatorOverrideController;
 
@@ -134,6 +135,13 @@ public class Player : MonoBehaviour {
         }
     }
 
+    void OnCollisionEnter2D(Collision2D col) {
+        if (col.gameObject.CompareTag("Seed")) {
+            OnSeedPickup();
+            col.gameObject.SetActive(false);
+        }
+    }
+
     void OnThrowEnded() {
         _animator.SetBool(HashIsThrowing, false);
 
@@ -158,9 +166,16 @@ public class Player : MonoBehaviour {
         );
 
         _hasSeed = false;
-        clipOverrides["AvocadoIdle"] = avocadoIdleNoSeedAnimationClip;
-        clipOverrides["AvocadoWalk"] = avocadoWalkNoSeedAnimationClip;
-        _animatorOverrideController.ApplyOverrides(clipOverrides);
+        _clipOverrides["AvocadoIdle"] = avocadoIdleNoSeedAnimationClip;
+        _clipOverrides["AvocadoWalk"] = avocadoWalkNoSeedAnimationClip;
+        _animatorOverrideController.ApplyOverrides(_clipOverrides);
+    }
+
+    void OnSeedPickup() {
+        _clipOverrides["AvocadoIdle"] = avocadoIdleAnimationClip;
+        _clipOverrides["AvocadoWalk"] = avocadoWalkAnimationClip;
+        _animatorOverrideController.ApplyOverrides(_clipOverrides);
+        _hasSeed = true;
     }
 }
 }
