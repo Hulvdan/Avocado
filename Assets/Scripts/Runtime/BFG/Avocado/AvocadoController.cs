@@ -11,7 +11,9 @@ public class AnimationClipOverrides : List<KeyValuePair<AnimationClip, Animation
         set {
             var index = FindIndex(x => x.Key.name.Equals(name));
             if (index != -1) {
-                this[index] = new KeyValuePair<AnimationClip, AnimationClip>(this[index].Key, value);
+                this[index] = new KeyValuePair<AnimationClip, AnimationClip>(
+                    this[index].Key, value
+                );
             }
         }
     }
@@ -67,7 +69,9 @@ public class AvocadoController : MonoBehaviour {
 
     void Start() {
         _animator = GetComponent<Animator>();
-        _animatorOverrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);
+        _animatorOverrideController = new AnimatorOverrideController(
+            _animator.runtimeAnimatorController
+        );
 
         _clipOverrides = new AnimationClipOverrides(_animatorOverrideController.overridesCount);
         _animatorOverrideController.GetOverrides(_clipOverrides);
