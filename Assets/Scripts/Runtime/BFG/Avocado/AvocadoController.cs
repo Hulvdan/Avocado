@@ -20,7 +20,9 @@ public class AnimationClipOverrides : List<KeyValuePair<AnimationClip, Animation
 }
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class AvocadoController : MonoBehaviour {
+    [Header("Throwing")]
     [SerializeField]
     internal GameObject seedProjectile;
 
@@ -36,6 +38,7 @@ public class AvocadoController : MonoBehaviour {
     [SerializeField]
     internal float seedSpawnForceY;
 
+    [Header("Animations")]
     [SerializeField]
     AnimationClip avocadoIdleAnimationClip;
 
@@ -48,23 +51,55 @@ public class AvocadoController : MonoBehaviour {
     [SerializeField]
     internal AnimationClip avocadoWalkNoSeedAnimationClip;
 
+    [Header("Movement")]
     [SerializeField]
     [Range(0, 10)]
     internal float movementSpeed = 1f;
 
+    [SerializeField]
+    internal float jumpingForce = 1f;
+
+    [SerializeField]
+    float _groundCheckOffset = -0.5f;
+
+    [SerializeField]
+    float _raycastDistance = 0.7f;
+
+    [SerializeField]
+    LayerMask layerTerrain;
+
+    BoxCollider2D _collider;
+
+    float _groundCheckOffsetFromCenterLeft;
+    float _groundCheckOffsetFromCenterRight;
+
     AvocadoState _state;
     AvocadoState[] _states;
 
+    bool _wasGroundedOnPreviousFrame = true;
     internal Animator Animator;
     internal AnimatorOverrideController AnimatorOverrideController;
 
     internal AnimationClipOverrides ClipOverrides;
     internal bool HasSeed = true;
 
+    internal float JumpingVelocity;
+    internal Rigidbody2D Rigidbody;
+
     internal GameObject Seed;
+
+    internal bool StartedFalling;
 
     void Start() {
         CreateStates();
+
+        _collider = GetComponent<BoxCollider2D>();
+        var size = _collider.size;
+        _groundCheckOffsetFromCenterLeft = -size.x / 2;
+        _groundCheckOffsetFromCenterRight = size.x / 2;
+
+        Rigidbody = GetComponent<Rigidbody2D>();
+
         _state = _states[0];
 
         Animator = GetComponent<Animator>();
@@ -86,6 +121,10 @@ public class AvocadoController : MonoBehaviour {
         _state.Update(ref me);
     }
 
+    void FixedUpdate() {
+        UpdateIsGrounded();
+    }
+
     void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject.CompareTag("Seed")) {
             OnSeedPickup();
@@ -93,9 +132,62 @@ public class AvocadoController : MonoBehaviour {
         }
     }
 
+    void OnDrawGizmos() {
+        if (_collider == null) {
+            _collider = GetComponent<BoxCollider2D>();
+        }
+
+        var size = _collider.size;
+        _groundCheckOffsetFromCenterLeft = -size.x / 2;
+        _groundCheckOffsetFromCenterRight = size.x / 2;
+
+        var from1 = transform.position
+                    + Vector3.right * _groundCheckOffsetFromCenterLeft
+                    + Vector3.down * _groundCheckOffset;
+        var from2 = transform.position
+                    + Vector3.right * _groundCheckOffsetFromCenterRight
+                    + Vector3.down * _groundCheckOffset;
+
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawRay(from1, Vector3.down);
+        Gizmos.DrawRay(from2, Vector3.down);
+    }
+
+    void UpdateIsGrounded() {
+        var from1 = transform.position
+                    + Vector3.right * _groundCheckOffsetFromCenterLeft
+                    + Vector3.down * _groundCheckOffset;
+        var from2 = transform.position
+                    + Vector3.right * _groundCheckOffsetFromCenterRight
+                    + Vector3.down * _groundCheckOffset;
+
+        var res1 = Physics2D.Raycast(from1, Vector2.down, _raycastDistance, layerTerrain);
+        var res2 = Physics2D.Raycast(from2, Vector2.down, _raycastDistance, layerTerrain);
+
+        var isGrounded = res1.collider != null || res2.collider != null;
+        var me = this;
+        if (isGrounded) {
+            _state.OnGrounded(ref me);
+        }
+        else {
+            _state.OnNotGrounded(ref me);
+        }
+
+        // if (isGrounded && !_wasGroundedOnPreviousFrame) {
+        //     _state.OnGrounded(ref me);
+        // }
+        // else if (!isGrounded && _wasGroundedOnPreviousFrame) {
+        //     _state.OnNotGrounded(ref me);
+        // }
+
+        _wasGroundedOnPreviousFrame = isGrounded;
+    }
+
     void CreateStates() {
         _states = new AvocadoState[] { null, null, null, null, null };
         _states[(int)AvocadoStateIndex.Movement] = new StateMovement(_states);
+        _states[(int)AvocadoStateIndex.Falling] = new StateFalling(_states);
+        _states[(int)AvocadoStateIndex.Jumping] = new StateJumping(_states);
         _states[(int)AvocadoStateIndex.Throwing] = new StateThrowing(_states);
     }
 

@@ -9,10 +9,18 @@ internal class StateMovement : AvocadoState {
     public StateMovement(AvocadoState[] states) : base(states) {
     }
 
+    public override void OnExit(ref AvocadoController avocado) {
+        avocado.Animator.SetBool(HashIsWalking, false);
+    }
+
     public override void OnThrow(ref AvocadoController avocado) {
         if (avocado.HasSeed) {
             SwitchState(ref avocado, AvocadoStateIndex.Throwing);
         }
+    }
+
+    public override void OnJumpStarted(ref AvocadoController avocado) {
+        SwitchState(ref avocado, AvocadoStateIndex.Jumping);
     }
 
     public override void OnMove(ref AvocadoController avocado, float moveAxisXValueNew) {
