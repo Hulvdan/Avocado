@@ -1,20 +1,24 @@
 using UnityEngine;
 
 public class Seed : MonoBehaviour {
-    [SerializeField]
-    LayerMask setToLayerMask;
+    bool _physicsLayerWasChanged;
 
-    float _startTime;
-    bool sett;
+    float _spawnedAt;
+
+    public void Reset() {
+        _spawnedAt = Time.time;
+        _physicsLayerWasChanged = false;
+        gameObject.layer = LayerMask.NameToLayer("Player");
+    }
 
     void Start() {
-        _startTime = Time.time;
+        Reset();
     }
 
     void Update() {
-        if (!sett && Time.time - _startTime > .5f) {
+        if (!_physicsLayerWasChanged && Time.time - _spawnedAt > .5f) {
             gameObject.layer = LayerMask.NameToLayer("Terrain");
-            sett = true;
+            _physicsLayerWasChanged = true;
         }
     }
 }

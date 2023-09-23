@@ -1,6 +1,5 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace BFG.Avocado {
 public class AnimationClipOverrides : List<KeyValuePair<AnimationClip, AnimationClip>> {
@@ -19,7 +18,7 @@ public class AnimationClipOverrides : List<KeyValuePair<AnimationClip, Animation
 }
 
 [RequireComponent(typeof(Animator))]
-public class Player : MonoBehaviour {
+public class AvocadoController : MonoBehaviour {
     static readonly int HashIsWalking = Animator.StringToHash("IsWalking");
     static readonly int HashIsThrowing = Animator.StringToHash("IsThrowing");
 
@@ -51,25 +50,20 @@ public class Player : MonoBehaviour {
     AnimationClip avocadoWalkNoSeedAnimationClip;
 
     [SerializeField]
-    InputActionAsset inputActionAsset;
-
-    [SerializeField]
     [Range(0, 10)]
     float movementSpeed = 1f;
-
-    InputAction _actionJump;
-    InputAction _actionMove;
-    InputAction _actionThrow;
 
     Animator _animator;
     AnimatorOverrideController _animatorOverrideController;
 
     AnimationClipOverrides _clipOverrides;
     bool _hasSeed = true;
-    InputActionMap _inputMapGameplay;
-    float _move;
+    float _moveAxisXValue;
+    float _moveAxisXValueNew;
 
     bool _needToThrow;
+
+    GameObject _seed;
 
     void Start() {
         _animator = GetComponent<Animator>();
@@ -79,20 +73,6 @@ public class Player : MonoBehaviour {
         _animatorOverrideController.GetOverrides(_clipOverrides);
 
         _animator.runtimeAnimatorController = _animatorOverrideController;
-
-        _inputMapGameplay = inputActionAsset.FindActionMap("Gameplay");
-
-        _actionJump = _inputMapGameplay.FindAction("Jump");
-        _actionMove = _inputMapGameplay.FindAction("Move");
-        _actionThrow = _inputMapGameplay.FindAction("Throw");
-
-        _inputMapGameplay.Enable();
-    }
-
-    void Update() {
-        if (_actionThrow.WasReleasedThisFrame()) {
-            _needToThrow = true;
-        }
     }
 
     void FixedUpdate() {
@@ -104,19 +84,18 @@ public class Player : MonoBehaviour {
             }
         }
 
-        var moveValue = _actionMove.ReadValue<float>();
-        if ((_move == 0f && moveValue != 0f)
-            || (moveValue == 0f && _move != 0f)) {
-            _animator.SetBool(HashIsWalking, moveValue != 0f);
+        if ((_moveAxisXValue == 0f && _moveAxisXValueNew != 0f)
+            || (_moveAxisXValueNew == 0f && _moveAxisXValue != 0f)) {
+            _animator.SetBool(HashIsWalking, _moveAxisXValueNew != 0f);
         }
 
-        _move = moveValue;
-        if (_move != 0f) {
+        _moveAxisXValue = _moveAxisXValueNew;
+        if (_moveAxisXValue != 0f) {
             var cachedTransform = transform;
             var position = cachedTransform.position;
 
             position = new Vector3(
-                position.x + movementSpeed * _move,
+                position.x + movementSpeed * _moveAxisXValue,
                 position.y,
                 position.z
             );
@@ -124,10 +103,10 @@ public class Player : MonoBehaviour {
             cachedTransform.position = position;
         }
 
-        if (_move != 0f) {
+        if (_moveAxisXValue != 0f) {
             var localScale = transform.localScale;
             localScale = new Vector3(
-                Mathf.Sign(_move) * Mathf.Abs(localScale.x),
+                Mathf.Sign(_moveAxisXValue) * Mathf.Abs(localScale.x),
                 localScale.y,
                 localScale.z
             );
@@ -142,22 +121,45 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public void Move(float x) {
+        _moveAxisXValueNew = x;
+    }
+
+    public void OnJumpStarted() {
+    }
+
+    public void OnJumpEnded() {
+    }
+
+    public void Throw() {
+        _needToThrow = true;
+    }
+
     void OnThrowEnded() {
         _animator.SetBool(HashIsThrowing, false);
 
         var cachedTransform = transform;
         var position = cachedTransform.position;
 
-        var spawnedSeed = Instantiate(
-            seedProjectile,
-            new Vector3(
-                position.x + seedSpawnOffsetX,
-                position.y + seedSpawnOffsetY,
-                position.z - 1
-            ),
-            cachedTransform.rotation
+        var newSeedPosition = new Vector3(
+            position.x + seedSpawnOffsetX,
+            position.y + seedSpawnOffsetY,
+            position.z - 1
         );
-        spawnedSeed.GetComponent<Rigidbody2D>().AddForce(
+        if (_seed == null) {
+            _seed = Instantiate(
+                seedProjectile,
+                newSeedPosition,
+                cachedTransform.rotation
+            );
+        }
+        else {
+            _seed.SetActive(true);
+            _seed.transform.position = newSeedPosition;
+            _seed.GetComponent<Seed>().Reset();
+        }
+
+        _seed.GetComponent<Rigidbody2D>().AddForce(
             new Vector2(
                 seedSpawnForceX * Mathf.Sign(transform.localScale.x),
                 seedSpawnForceY
