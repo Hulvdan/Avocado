@@ -21,23 +21,20 @@ public class AnimationClipOverrides : List<KeyValuePair<AnimationClip, Animation
 
 [RequireComponent(typeof(Animator))]
 public class AvocadoController : MonoBehaviour {
-    static readonly int HashIsWalking = Animator.StringToHash("IsWalking");
-    static readonly int HashIsThrowing = Animator.StringToHash("IsThrowing");
+    [SerializeField]
+    internal GameObject seedProjectile;
 
     [SerializeField]
-    GameObject seedProjectile;
+    internal float seedSpawnOffsetX;
 
     [SerializeField]
-    float seedSpawnOffsetX;
+    internal float seedSpawnOffsetY;
 
     [SerializeField]
-    float seedSpawnOffsetY;
+    internal float seedSpawnForceX;
 
     [SerializeField]
-    float seedSpawnForceX;
-
-    [SerializeField]
-    float seedSpawnForceY;
+    internal float seedSpawnForceY;
 
     [SerializeField]
     AnimationClip avocadoIdleAnimationClip;
@@ -46,76 +43,47 @@ public class AvocadoController : MonoBehaviour {
     AnimationClip avocadoWalkAnimationClip;
 
     [SerializeField]
-    AnimationClip avocadoIdleNoSeedAnimationClip;
+    internal AnimationClip avocadoIdleNoSeedAnimationClip;
 
     [SerializeField]
-    AnimationClip avocadoWalkNoSeedAnimationClip;
+    internal AnimationClip avocadoWalkNoSeedAnimationClip;
 
     [SerializeField]
     [Range(0, 10)]
-    float movementSpeed = 1f;
+    internal float movementSpeed = 1f;
 
-    Animator _animator;
-    AnimatorOverrideController _animatorOverrideController;
+    AvocadoState _state;
+    AvocadoState[] _states;
 
-    AnimationClipOverrides _clipOverrides;
-    bool _hasSeed = true;
-    float _moveAxisXValue;
-    float _moveAxisXValueNew;
+    internal Animator Animator;
+    internal AnimatorOverrideController AnimatorOverrideController;
 
-    bool _needToThrow;
+    internal AnimationClipOverrides ClipOverrides;
+    internal bool HasSeed = true;
 
-    GameObject _seed;
+    internal GameObject Seed;
 
     void Start() {
-        _animator = GetComponent<Animator>();
-        _animatorOverrideController = new AnimatorOverrideController(
-            _animator.runtimeAnimatorController
+        CreateStates();
+        _state = _states[0];
+
+        Animator = GetComponent<Animator>();
+        AnimatorOverrideController = new AnimatorOverrideController(
+            Animator.runtimeAnimatorController
         );
 
-        _clipOverrides = new AnimationClipOverrides(_animatorOverrideController.overridesCount);
-        _animatorOverrideController.GetOverrides(_clipOverrides);
+        ClipOverrides = new AnimationClipOverrides(AnimatorOverrideController.overridesCount);
+        AnimatorOverrideController.GetOverrides(ClipOverrides);
 
-        _animator.runtimeAnimatorController = _animatorOverrideController;
+        Animator.runtimeAnimatorController = AnimatorOverrideController;
+
+        var me = this;
+        _state.OnEnter(ref me);
     }
 
-    void FixedUpdate() {
-        if (_needToThrow) {
-            _needToThrow = false;
-
-            if (_hasSeed) {
-                _animator.SetBool(HashIsThrowing, true);
-            }
-        }
-
-        if ((_moveAxisXValue == 0f && _moveAxisXValueNew != 0f)
-            || (_moveAxisXValueNew == 0f && _moveAxisXValue != 0f)) {
-            _animator.SetBool(HashIsWalking, _moveAxisXValueNew != 0f);
-        }
-
-        _moveAxisXValue = _moveAxisXValueNew;
-        if (_moveAxisXValue != 0f) {
-            var cachedTransform = transform;
-            var position = cachedTransform.position;
-
-            position = new Vector3(
-                position.x + movementSpeed * _moveAxisXValue,
-                position.y,
-                position.z
-            );
-
-            cachedTransform.position = position;
-        }
-
-        if (_moveAxisXValue != 0f) {
-            var localScale = transform.localScale;
-            localScale = new Vector3(
-                Mathf.Sign(_moveAxisXValue) * Mathf.Abs(localScale.x),
-                localScale.y,
-                localScale.z
-            );
-            transform.localScale = localScale;
-        }
+    void Update() {
+        var me = this;
+        _state.Update(ref me);
     }
 
     void OnCollisionEnter2D(Collision2D col) {
@@ -125,63 +93,50 @@ public class AvocadoController : MonoBehaviour {
         }
     }
 
+    void CreateStates() {
+        _states = new AvocadoState[] { null, null, null, null, null };
+        _states[(int)AvocadoStateIndex.Movement] = new StateMovement(_states);
+        _states[(int)AvocadoStateIndex.Throwing] = new StateThrowing(_states);
+    }
+
     public void Move(float x) {
-        _moveAxisXValueNew = x;
+        var me = this;
+        _state.OnMove(ref me, x);
     }
 
     public void OnJumpStarted() {
+        var me = this;
+        _state.OnJumpStarted(ref me);
     }
 
     public void OnJumpEnded() {
+        var me = this;
+        _state.OnJumpEnded(ref me);
     }
 
     public void Throw() {
-        _needToThrow = true;
+        var me = this;
+        _state.OnThrow(ref me);
     }
 
     void OnThrowEnded() {
-        _animator.SetBool(HashIsThrowing, false);
-
-        var cachedTransform = transform;
-        var position = cachedTransform.position;
-
-        var newSeedPosition = new Vector3(
-            position.x + seedSpawnOffsetX,
-            position.y + seedSpawnOffsetY,
-            position.z - 1
-        );
-        if (_seed == null) {
-            _seed = Instantiate(
-                seedProjectile,
-                newSeedPosition,
-                cachedTransform.rotation
-            );
-        }
-        else {
-            _seed.SetActive(true);
-            _seed.transform.position = newSeedPosition;
-            _seed.GetComponent<Seed>().Reset();
-        }
-
-        _seed.GetComponent<Rigidbody2D>().AddForce(
-            new Vector2(
-                seedSpawnForceX * Mathf.Sign(transform.localScale.x),
-                seedSpawnForceY
-            ),
-            ForceMode2D.Impulse
-        );
-
-        _hasSeed = false;
-        _clipOverrides["AvocadoIdle"] = avocadoIdleNoSeedAnimationClip;
-        _clipOverrides["AvocadoWalk"] = avocadoWalkNoSeedAnimationClip;
-        _animatorOverrideController.ApplyOverrides(_clipOverrides);
+        var me = this;
+        _state.OnThrowEnded(ref me);
     }
 
     void OnSeedPickup() {
-        _clipOverrides["AvocadoIdle"] = avocadoIdleAnimationClip;
-        _clipOverrides["AvocadoWalk"] = avocadoWalkAnimationClip;
-        _animatorOverrideController.ApplyOverrides(_clipOverrides);
-        _hasSeed = true;
+        ClipOverrides["AvocadoIdle"] = avocadoIdleAnimationClip;
+        ClipOverrides["AvocadoWalk"] = avocadoWalkAnimationClip;
+        AnimatorOverrideController.ApplyOverrides(ClipOverrides);
+        HasSeed = true;
+    }
+
+    internal void SwitchState(AvocadoState newState) {
+        var me = this;
+
+        _state.OnExit(ref me);
+        _state = newState;
+        newState.OnEnter(ref me);
     }
 }
 }
