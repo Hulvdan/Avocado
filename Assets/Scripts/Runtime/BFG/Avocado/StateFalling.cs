@@ -9,6 +9,8 @@ internal class StateFalling : AvocadoState {
 
     public override void OnEnter(ref AvocadoController avocado) {
         avocado.Animator.SetBool(AvocadoAnimatorConsts.HashIsFalling, true);
+
+        elapsed = 0;
     }
 
     public override void OnExit(ref AvocadoController avocado) {
@@ -23,10 +25,7 @@ internal class StateFalling : AvocadoState {
         avocado.Rigidbody.gravityScale = Mathf.Lerp(
             1f,
             avocado.fallingSpeedIncreaseMaxScale,
-            Mathf.Min(
-                elapsed / 1000f / avocado.fallingSpeedIncreaseDuration,
-                avocado.fallingSpeedIncreaseDuration
-            )
+            elapsed / avocado.fallingSpeedIncreaseDuration
         );
     }
 

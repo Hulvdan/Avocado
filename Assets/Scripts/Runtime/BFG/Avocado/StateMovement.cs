@@ -52,5 +52,9 @@ internal class StateMovement : AvocadoState {
             avocado.transform.localScale = localScale;
         }
     }
+
+    public override void OnNotGrounded(ref AvocadoController avocado) {
+        SwitchState(ref avocado, AvocadoStateIndex.Falling);
+    }
 }
 }

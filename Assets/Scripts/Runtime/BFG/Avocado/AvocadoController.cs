@@ -66,7 +66,7 @@ public class AvocadoController : MonoBehaviour {
 
     [Header("Movement")]
     [SerializeField]
-    [Range(0, 10)]
+    [Min(0)]
     internal float movementSpeed = 1f;
 
     [SerializeField]
@@ -76,6 +76,10 @@ public class AvocadoController : MonoBehaviour {
     [SerializeField]
     [Min(1)]
     internal float fallingSpeedIncreaseMaxScale = 3f;
+
+    [SerializeField]
+    [Min(0)]
+    internal float maxVerticalSpeed = 1f;
 
     [SerializeField]
     float groundCheckOffset = -0.5f;
@@ -109,6 +113,8 @@ public class AvocadoController : MonoBehaviour {
     internal GameObject Seed;
 
     internal float verticalVelocity;
+
+    public float jumpStartingVelocity { get; }
 
     void Start() {
         CreateStates();
@@ -144,6 +150,12 @@ public class AvocadoController : MonoBehaviour {
 
     void FixedUpdate() {
         UpdateIsGrounded();
+
+        var vel = Rigidbody.velocity;
+        Rigidbody.velocity = new Vector2(
+            vel.x,
+            Mathf.Clamp(vel.y, -maxVerticalSpeed, maxVerticalSpeed)
+        );
     }
 
     void OnCollisionEnter2D(Collision2D col) {

@@ -265,7 +265,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.0995}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -276,7 +276,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.875, y: 1}
+  m_Size: {x: 0.874, y: 0.8}
   m_EdgeRadius: 0
 --- !u!50 &225358440
 Rigidbody2D:
@@ -345,8 +345,9 @@ MonoBehaviour:
   avocadoJumpNoSeedAnimationClip: {fileID: 7400000, guid: 0c0a6dee2ce14e64888b64bea2f020f8, type: 2}
   avocadoFallNoSeedAnimationClip: {fileID: 7400000, guid: b8b46bbeaf54b584d9b7bc53467d1afa, type: 2}
   movementSpeed: 0.08
-  fallingSpeedIncreaseDuration: 0.2
+  fallingSpeedIncreaseDuration: 1
   fallingSpeedIncreaseMaxScale: 3
+  maxVerticalSpeed: 15
   groundCheckOffset: 0.5
   raycastDistance: 0.1
   layerTerrain:
