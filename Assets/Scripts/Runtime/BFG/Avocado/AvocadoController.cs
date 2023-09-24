@@ -83,13 +83,7 @@ public class AvocadoController : MonoBehaviour {
 
     [SerializeField]
     [Min(0)]
-    internal float maxVerticalSpeed = 1f;
-
-#if UNITY_EDITOR
-    [SerializeField]
-    [ReadOnlyAttribute]
-    public float InitialJumpVelocity = 1f;
-#endif
+    public float maxVerticalSpeed = 1f;
 
     [SerializeField]
     float groundCheckOffset = -0.5f;

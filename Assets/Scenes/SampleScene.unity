@@ -349,7 +349,6 @@ MonoBehaviour:
   fallingSpeedIncreaseInitialScale: 1
   fallingSpeedIncreaseMaxScale: 3
   maxVerticalSpeed: 15
-  InitialJumpVelocity: 11
   groundCheckOffset: 0.5
   raycastDistance: 0.1
   layerTerrain:

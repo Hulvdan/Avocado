@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 namespace BFG.Avocado {
+[ExecuteAlways]
 public class GameManager : MonoBehaviour {
     static float _gravity;
     public static float InitialJumpVelocity;
@@ -17,9 +18,11 @@ public class GameManager : MonoBehaviour {
         RecalculatePhysics();
     }
 
-    void FixedUpdate() {
+#if UNITY_EDITOR
+    void Update() {
         RecalculatePhysics();
     }
+#endif
 
     void RecalculatePhysics() {
         var t = secondsNeededToReachMaxJumpHeight;
