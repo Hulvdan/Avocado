@@ -44,8 +44,14 @@ internal class StateThrowing : AvocadoState {
         );
 
         avocado.HasSeed = false;
-        avocado.ClipOverrides["AvocadoIdle"] = avocado.avocadoIdleNoSeedAnimationClip;
-        avocado.ClipOverrides["AvocadoWalk"] = avocado.avocadoWalkNoSeedAnimationClip;
+        avocado.ClipOverrides[AvocadoAnimatorConsts.AvocadoIdleState] =
+            avocado.avocadoIdleNoSeedAnimationClip;
+        avocado.ClipOverrides[AvocadoAnimatorConsts.AvocadoWalkState] =
+            avocado.avocadoWalkNoSeedAnimationClip;
+        avocado.ClipOverrides[AvocadoAnimatorConsts.AvocadoJumpState] =
+            avocado.avocadoJumpNoSeedAnimationClip;
+        avocado.ClipOverrides[AvocadoAnimatorConsts.AvocadoFallState] =
+            avocado.avocadoFallNoSeedAnimationClip;
         avocado.AnimatorOverrideController.ApplyOverrides(avocado.ClipOverrides);
 
         SwitchState(ref avocado, AvocadoStateIndex.Movement);

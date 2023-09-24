@@ -2,15 +2,17 @@
 
 namespace BFG.Avocado {
 internal class StateMovement : AvocadoState {
-    static readonly int HashIsWalking = Animator.StringToHash("IsWalking");
-
     float _moveAxisXValue;
 
     public StateMovement(AvocadoState[] states) : base(states) {
     }
 
+    public override void OnEnter(ref AvocadoController avocado) {
+        avocado.Animator.SetBool(AvocadoAnimatorConsts.HashIsWalking, avocado.MoveAxisXValue != 0f);
+    }
+
     public override void OnExit(ref AvocadoController avocado) {
-        avocado.Animator.SetBool(HashIsWalking, false);
+        avocado.Animator.SetBool(AvocadoAnimatorConsts.HashIsWalking, false);
     }
 
     public override void OnThrow(ref AvocadoController avocado) {
@@ -24,9 +26,10 @@ internal class StateMovement : AvocadoState {
     }
 
     public override void OnMove(ref AvocadoController avocado, float moveAxisXValueNew) {
-        if ((_moveAxisXValue == 0f && moveAxisXValueNew != 0f)
-            || (moveAxisXValueNew == 0f && _moveAxisXValue != 0f)) {
-            avocado.Animator.SetBool(HashIsWalking, moveAxisXValueNew != 0f);
+        var axisDirectionChanged = (_moveAxisXValue == 0f && moveAxisXValueNew != 0f)
+                                   || (moveAxisXValueNew == 0f && _moveAxisXValue != 0f);
+        if (axisDirectionChanged) {
+            avocado.Animator.SetBool(AvocadoAnimatorConsts.HashIsWalking, moveAxisXValueNew != 0f);
         }
 
         _moveAxisXValue = moveAxisXValueNew;

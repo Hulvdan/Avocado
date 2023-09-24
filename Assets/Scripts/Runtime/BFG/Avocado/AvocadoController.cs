@@ -46,10 +46,22 @@ public class AvocadoController : MonoBehaviour {
     AnimationClip avocadoWalkAnimationClip;
 
     [SerializeField]
+    AnimationClip avocadoJumpAnimationClip;
+
+    [SerializeField]
+    AnimationClip avocadoFallAnimationClip;
+
+    [SerializeField]
     internal AnimationClip avocadoIdleNoSeedAnimationClip;
 
     [SerializeField]
     internal AnimationClip avocadoWalkNoSeedAnimationClip;
+
+    [SerializeField]
+    internal AnimationClip avocadoJumpNoSeedAnimationClip;
+
+    [SerializeField]
+    internal AnimationClip avocadoFallNoSeedAnimationClip;
 
     [Header("Movement")]
     [SerializeField]
@@ -60,10 +72,10 @@ public class AvocadoController : MonoBehaviour {
     internal float jumpingForce = 1f;
 
     [SerializeField]
-    float _groundCheckOffset = -0.5f;
+    float groundCheckOffset = -0.5f;
 
     [SerializeField]
-    float _raycastDistance = 0.7f;
+    float raycastDistance = 0.7f;
 
     [SerializeField]
     LayerMask layerTerrain;
@@ -83,12 +95,10 @@ public class AvocadoController : MonoBehaviour {
     internal AnimationClipOverrides ClipOverrides;
     internal bool HasSeed = true;
 
-    internal float JumpingVelocity;
+    internal float MoveAxisXValue;
     internal Rigidbody2D Rigidbody;
 
     internal GameObject Seed;
-
-    internal bool StartedFalling;
 
     void Start() {
         CreateStates();
@@ -143,10 +153,10 @@ public class AvocadoController : MonoBehaviour {
 
         var from1 = transform.position
                     + Vector3.right * _groundCheckOffsetFromCenterLeft
-                    + Vector3.down * _groundCheckOffset;
+                    + Vector3.down * groundCheckOffset;
         var from2 = transform.position
                     + Vector3.right * _groundCheckOffsetFromCenterRight
-                    + Vector3.down * _groundCheckOffset;
+                    + Vector3.down * groundCheckOffset;
 
         Gizmos.color = Color.magenta;
         Gizmos.DrawRay(from1, Vector3.down);
@@ -154,15 +164,16 @@ public class AvocadoController : MonoBehaviour {
     }
 
     void UpdateIsGrounded() {
-        var from1 = transform.position
+        var pos = transform.position;
+        var from1 = pos
                     + Vector3.right * _groundCheckOffsetFromCenterLeft
-                    + Vector3.down * _groundCheckOffset;
-        var from2 = transform.position
+                    + Vector3.down * groundCheckOffset;
+        var from2 = pos
                     + Vector3.right * _groundCheckOffsetFromCenterRight
-                    + Vector3.down * _groundCheckOffset;
+                    + Vector3.down * groundCheckOffset;
 
-        var res1 = Physics2D.Raycast(from1, Vector2.down, _raycastDistance, layerTerrain);
-        var res2 = Physics2D.Raycast(from2, Vector2.down, _raycastDistance, layerTerrain);
+        var res1 = Physics2D.Raycast(from1, Vector2.down, raycastDistance, layerTerrain);
+        var res2 = Physics2D.Raycast(from2, Vector2.down, raycastDistance, layerTerrain);
 
         var isGrounded = res1.collider != null || res2.collider != null;
         var me = this;
@@ -217,8 +228,10 @@ public class AvocadoController : MonoBehaviour {
     }
 
     void OnSeedPickup() {
-        ClipOverrides["AvocadoIdle"] = avocadoIdleAnimationClip;
-        ClipOverrides["AvocadoWalk"] = avocadoWalkAnimationClip;
+        ClipOverrides[AvocadoAnimatorConsts.AvocadoIdleState] = avocadoIdleAnimationClip;
+        ClipOverrides[AvocadoAnimatorConsts.AvocadoWalkState] = avocadoWalkAnimationClip;
+        ClipOverrides[AvocadoAnimatorConsts.AvocadoFallState] = avocadoFallAnimationClip;
+        ClipOverrides[AvocadoAnimatorConsts.AvocadoJumpState] = avocadoJumpAnimationClip;
         AnimatorOverrideController.ApplyOverrides(ClipOverrides);
         HasSeed = true;
     }

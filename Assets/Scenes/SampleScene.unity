@@ -338,12 +338,16 @@ MonoBehaviour:
   seedSpawnForceY: 0
   avocadoIdleAnimationClip: {fileID: 7400000, guid: 7270500ed9efad746a1d7c77336fa2e0, type: 2}
   avocadoWalkAnimationClip: {fileID: 7400000, guid: ab90f6fc020e7814f9fa466553e8752d, type: 2}
+  avocadoJumpAnimationClip: {fileID: 7400000, guid: e27dbc4d58bba0249923b6806c12565e, type: 2}
+  avocadoFallAnimationClip: {fileID: 7400000, guid: fee299a727eebc4429fb30e091b82988, type: 2}
+  avocadoJumpNoSeedAnimationClip: {fileID: 7400000, guid: 0c0a6dee2ce14e64888b64bea2f020f8, type: 2}
+  avocadoFallNoSeedAnimationClip: {fileID: 7400000, guid: b8b46bbeaf54b584d9b7bc53467d1afa, type: 2}
   avocadoIdleNoSeedAnimationClip: {fileID: 7400000, guid: b1e5f439ceb7c2a42bdcd56317e6c133, type: 2}
   avocadoWalkNoSeedAnimationClip: {fileID: 7400000, guid: d242f5bcb2d96a340a50b55fa756bc63, type: 2}
   movementSpeed: 0.08
   jumpingForce: 10
-  _groundCheckOffset: 0.5
-  _raycastDistance: 0.1
+  groundCheckOffset: 0.5
+  raycastDistance: 0.1
   layerTerrain:
     serializedVersion: 2
     m_Bits: 64
@@ -703,8 +707,8 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
-  m_GenerationType: 1
+  m_GeometryType: 1
+  m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths: []
   m_CompositePaths:
