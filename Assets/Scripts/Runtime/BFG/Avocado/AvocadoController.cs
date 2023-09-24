@@ -21,6 +21,7 @@ public class AnimationClipOverrides : List<KeyValuePair<AnimationClip, Animation
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(BoxCollider2D))]
 public class AvocadoController : MonoBehaviour {
     [Header("Throwing")]
     [SerializeField]
@@ -69,7 +70,12 @@ public class AvocadoController : MonoBehaviour {
     internal float movementSpeed = 1f;
 
     [SerializeField]
-    internal float jumpingForce = 1f;
+    [Min(0)]
+    internal float fallingSpeedIncreaseDuration = 1f;
+
+    [SerializeField]
+    [Min(1)]
+    internal float fallingSpeedIncreaseMaxScale = 3f;
 
     [SerializeField]
     float groundCheckOffset = -0.5f;
@@ -79,6 +85,8 @@ public class AvocadoController : MonoBehaviour {
 
     [SerializeField]
     LayerMask layerTerrain;
+
+    readonly float gravity = -9.81f;
 
     BoxCollider2D _collider;
 
@@ -99,6 +107,8 @@ public class AvocadoController : MonoBehaviour {
     internal Rigidbody2D Rigidbody;
 
     internal GameObject Seed;
+
+    internal float verticalVelocity;
 
     void Start() {
         CreateStates();
@@ -129,6 +139,7 @@ public class AvocadoController : MonoBehaviour {
     void Update() {
         var me = this;
         _state.Update(ref me);
+        // _state.OnGravity(ref me, gravity);
     }
 
     void FixedUpdate() {

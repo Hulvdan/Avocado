@@ -26,11 +26,7 @@ internal class StateMovement : AvocadoState {
     }
 
     public override void OnMove(ref AvocadoController avocado, float moveAxisXValueNew) {
-        var axisDirectionChanged = (_moveAxisXValue == 0f && moveAxisXValueNew != 0f)
-                                   || (moveAxisXValueNew == 0f && _moveAxisXValue != 0f);
-        if (axisDirectionChanged) {
-            avocado.Animator.SetBool(AvocadoAnimatorConsts.HashIsWalking, moveAxisXValueNew != 0f);
-        }
+        avocado.Animator.SetBool(AvocadoAnimatorConsts.HashIsWalking, moveAxisXValueNew != 0f);
 
         _moveAxisXValue = moveAxisXValueNew;
         if (_moveAxisXValue != 0f) {

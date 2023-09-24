@@ -7,9 +7,10 @@ internal class StateJumping : AvocadoState {
 
     public override void OnEnter(ref AvocadoController avocado) {
         avocado.Rigidbody.AddForce(
-            Vector2.up * avocado.jumpingForce,
+            Vector2.up * GameManager.InitialJumpVelocity,
             ForceMode2D.Impulse
         );
+        // Debug.Log($"StateJumping: InitialJumpVelocity: {GameManager.InitialJumpVelocity}");
         avocado.Animator.SetBool(AvocadoAnimatorConsts.HashIsJumping, true);
     }
 

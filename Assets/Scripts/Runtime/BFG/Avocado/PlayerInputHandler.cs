@@ -40,5 +40,13 @@ public class PlayerInputHandler : MonoBehaviour {
     void FixedUpdate() {
         avocadoController.Move(_actionMove.ReadValue<float>());
     }
+
+    void OnEnable() {
+        _inputMapGameplay?.Enable();
+    }
+
+    void OnDisable() {
+        _inputMapGameplay?.Disable();
+    }
 }
 }

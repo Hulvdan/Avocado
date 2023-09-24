@@ -1,0 +1,32 @@
+﻿using UnityEngine;
+
+namespace BFG.Avocado {
+public class GameManager : MonoBehaviour {
+    static float _gravity;
+    public static float InitialJumpVelocity;
+
+    [SerializeField]
+    [Range(0.01f, 3f)]
+    float secondsNeededToReachMaxJumpHeight = 0.6f;
+
+    [SerializeField]
+    [Range(0.01f, 10f)]
+    float jumpHeight = 3f;
+
+    void Start() {
+        RecalculatePhysics();
+    }
+
+    void FixedUpdate() {
+        RecalculatePhysics();
+    }
+
+    void RecalculatePhysics() {
+        var t = secondsNeededToReachMaxJumpHeight;
+        _gravity = -2f * jumpHeight / t / t;
+        InitialJumpVelocity = 2f * jumpHeight / t;
+
+        Physics2D.gravity = Vector2.up * _gravity;
+    }
+}
+}

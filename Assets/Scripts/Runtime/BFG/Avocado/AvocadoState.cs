@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace BFG.Avocado {
+﻿namespace BFG.Avocado {
 internal abstract class AvocadoState {
     readonly AvocadoState[] _states;
 
@@ -20,8 +18,9 @@ internal abstract class AvocadoState {
     public virtual void OnJumpEnded(ref AvocadoController avocado) {
     }
 
-    public virtual void OnGravity(ref AvocadoController avocado, float gravity) {
-    }
+    // public virtual void OnGravity(ref AvocadoController avocado, float gravity) {
+    //     avocado.Rigidbody.MovePosition(avocado.Rigidbody.position + Vector2.up * gravity);
+    // }
 
     public virtual void OnMove(ref AvocadoController avocado, float moveAxisValue) {
     }
@@ -61,7 +60,7 @@ internal abstract class AvocadoState {
                 break;
         }
 
-        Debug.Log($"Switching to \"{stateName}\" state");
+        // Debug.Log($"Switching to \"{stateName}\" state");
 
         avocado.SwitchState(_states[(int)index]);
     }
