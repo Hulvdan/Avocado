@@ -1,14 +1,20 @@
 using UnityEngine;
 
 public class Seed : MonoBehaviour {
-    bool _physicsLayerWasChanged;
+    [SerializeField]
+    GameObject trigger;
+
+    [SerializeField]
+    float unpickableDuration = .5f;
 
     float _spawnedAt;
 
+    bool _triggerWasActivated;
+
     public void Reset() {
         _spawnedAt = Time.time;
-        _physicsLayerWasChanged = false;
-        gameObject.layer = LayerMask.NameToLayer("Player");
+        _triggerWasActivated = false;
+        trigger.SetActive(false);
     }
 
     void Start() {
@@ -16,9 +22,9 @@ public class Seed : MonoBehaviour {
     }
 
     void Update() {
-        if (!_physicsLayerWasChanged && Time.time - _spawnedAt > .5f) {
-            gameObject.layer = LayerMask.NameToLayer("Terrain");
-            _physicsLayerWasChanged = true;
+        if (!_triggerWasActivated && Time.time - _spawnedAt > unpickableDuration) {
+            _triggerWasActivated = true;
+            trigger.SetActive(true);
         }
     }
 }

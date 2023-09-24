@@ -158,13 +158,6 @@ public class AvocadoController : MonoBehaviour {
         );
     }
 
-    void OnCollisionEnter2D(Collision2D col) {
-        if (col.gameObject.CompareTag("Seed")) {
-            OnSeedPickup();
-            col.gameObject.SetActive(false);
-        }
-    }
-
     void OnDrawGizmos() {
         if (_collider == null) {
             _collider = GetComponent<BoxCollider2D>();
@@ -184,6 +177,13 @@ public class AvocadoController : MonoBehaviour {
         Gizmos.color = Color.magenta;
         Gizmos.DrawRay(from1, Vector3.down);
         Gizmos.DrawRay(from2, Vector3.down);
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.CompareTag("SeedTrigger")) {
+            OnSeedPickup();
+            other.gameObject.GetComponentInParent<Seed>().gameObject.SetActive(false);
+        }
     }
 
     void UpdateIsGrounded() {
