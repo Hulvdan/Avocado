@@ -335,7 +335,7 @@ MonoBehaviour:
   seedSpawnOffsetX: 0
   seedSpawnOffsetY: 0
   seedSpawnForceX: 10
-  seedSpawnForceY: 0
+  seedSpawnForceY: 4
   avocadoIdleAnimationClip: {fileID: 7400000, guid: 7270500ed9efad746a1d7c77336fa2e0, type: 2}
   avocadoWalkAnimationClip: {fileID: 7400000, guid: ab90f6fc020e7814f9fa466553e8752d, type: 2}
   avocadoJumpAnimationClip: {fileID: 7400000, guid: e27dbc4d58bba0249923b6806c12565e, type: 2}
@@ -346,8 +346,10 @@ MonoBehaviour:
   avocadoFallNoSeedAnimationClip: {fileID: 7400000, guid: b8b46bbeaf54b584d9b7bc53467d1afa, type: 2}
   movementSpeed: 0.08
   fallingSpeedIncreaseDuration: 1
+  fallingSpeedIncreaseInitialScale: 1
   fallingSpeedIncreaseMaxScale: 3
   maxVerticalSpeed: 15
+  InitialJumpVelocity: 11
   groundCheckOffset: 0.5
   raycastDistance: 0.1
   layerTerrain:
@@ -872,9 +874,143 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 282051888}
+    m_ColliderPaths:
+    - - X: 10000000
+        Y: 90000000
+      - X: 0
+        Y: 90000000
+      - X: 0
+        Y: 70000000
+      - X: 10000000
+        Y: 70000000
+    - - X: 50000000
+        Y: 90000000
+      - X: 40000000
+        Y: 90000000
+      - X: 40000000
+        Y: 70000000
+      - X: 50000000
+        Y: 70000000
+    - - X: 40000000
+        Y: 70000000
+      - X: 30000000
+        Y: 70000000
+      - X: 30000000
+        Y: 50000000
+      - X: 40000000
+        Y: 50000000
+    - - X: 0
+        Y: 70000000
+      - X: -10000000
+        Y: 70000000
+      - X: -10000000
+        Y: 50000000
+      - X: 0
+        Y: 50000000
+    - - X: 10000000
+        Y: 50000000
+      - X: 0
+        Y: 50000000
+      - X: 0
+        Y: 30000000
+      - X: 10000000
+        Y: 30000000
+    - - X: 50000000
+        Y: 50000000
+      - X: 40000000
+        Y: 50000000
+      - X: 40000000
+        Y: 30000000
+      - X: 50000000
+        Y: 30000000
+    - - X: 40000000
+        Y: 30000000
+      - X: 30000000
+        Y: 30000000
+      - X: 30000000
+        Y: 10000000
+      - X: 40000000
+        Y: 10000000
+    - - X: 0
+        Y: 30000000
+      - X: -10000000
+        Y: 30000000
+      - X: -10000000
+        Y: 10000000
+      - X: 0
+        Y: 10000000
+    - - X: 80000000
+        Y: -10000000
+      - X: 50000000
+        Y: -10000000
+      - X: 50000000
+        Y: 10000000
+      - X: 40000000
+        Y: 10000000
+      - X: 40000000
+        Y: -10000000
+      - X: 10000000
+        Y: -10000000
+      - X: 10000000
+        Y: 10000000
+      - X: 0
+        Y: 10000000
+      - X: 0
+        Y: -10000000
+      - X: -50000000
+        Y: -10000000
+      - X: -50000000
+        Y: -20000000
+      - X: 80000000
+        Y: -20000000
   m_CompositePaths:
-    m_Paths: []
+    m_Paths:
+    - - {x: 4.999971, y: 7}
+      - {x: 4.999971, y: 9}
+      - {x: 4, y: 8.99997}
+      - {x: 4.000029, y: 7}
+    - - {x: 0.99997073, y: 7}
+      - {x: 0.99997073, y: 9}
+      - {x: 0, y: 8.99997}
+      - {x: 0.000029300001, y: 7}
+    - - {x: 3.999971, y: 5}
+      - {x: 3.999971, y: 7}
+      - {x: 3, y: 6.9999704}
+      - {x: 3.0000293, y: 5}
+    - - {x: -0.000029300001, y: 5}
+      - {x: -0.000029300001, y: 7}
+      - {x: -1, y: 6.9999704}
+      - {x: -0.99997073, y: 5}
+    - - {x: 4.999971, y: 3}
+      - {x: 4.999971, y: 5}
+      - {x: 4, y: 4.999971}
+      - {x: 4.000029, y: 3}
+    - - {x: 0.99997073, y: 3}
+      - {x: 0.99997073, y: 5}
+      - {x: 0, y: 4.999971}
+      - {x: 0.000029300001, y: 3}
+    - - {x: 3.999971, y: 1}
+      - {x: 3.999971, y: 3}
+      - {x: 3, y: 2.999971}
+      - {x: 3.0000293, y: 1}
+    - - {x: -0.000029300001, y: 1}
+      - {x: -0.000029300001, y: 3}
+      - {x: -1, y: 2.999971}
+      - {x: -0.99997073, y: 1}
+    - - {x: 7.9999704, y: -2}
+      - {x: 7.9999704, y: -1}
+      - {x: 5, y: -0.9999706}
+      - {x: 4.999971, y: 1}
+      - {x: 4, y: 0.99997073}
+      - {x: 3.9999704, y: -1}
+      - {x: 1, y: -0.9999706}
+      - {x: 0.99997073, y: 1}
+      - {x: 0, y: 0.99997073}
+      - {x: -0.0000294, y: -1}
+      - {x: -5, y: -1.0000293}
+      - {x: -4.999971, y: -2}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -937,7 +1073,7 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
@@ -1301,6 +1437,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1270462278}
   - component: {fileID: 1270462277}
+  - component: {fileID: 1270462279}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1337,6 +1474,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1270462279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270462276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69dddf0cb9ad4bd382ad7825792d6210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetFrameRate: 60
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

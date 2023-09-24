@@ -23,7 +23,7 @@ internal class StateFalling : AvocadoState {
         elapsed += Time.deltaTime;
 
         avocado.Rigidbody.gravityScale = Mathf.Lerp(
-            1f,
+            avocado.fallingSpeedIncreaseInitialScale,
             avocado.fallingSpeedIncreaseMaxScale,
             elapsed / avocado.fallingSpeedIncreaseDuration
         );

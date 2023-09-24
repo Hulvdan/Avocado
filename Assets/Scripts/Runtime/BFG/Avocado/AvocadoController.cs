@@ -75,11 +75,21 @@ public class AvocadoController : MonoBehaviour {
 
     [SerializeField]
     [Min(1)]
+    internal float fallingSpeedIncreaseInitialScale = 1f;
+
+    [SerializeField]
+    [Min(1)]
     internal float fallingSpeedIncreaseMaxScale = 3f;
 
     [SerializeField]
     [Min(0)]
     internal float maxVerticalSpeed = 1f;
+
+#if UNITY_EDITOR
+    [SerializeField]
+    [ReadOnlyAttribute]
+    public float InitialJumpVelocity = 1f;
+#endif
 
     [SerializeField]
     float groundCheckOffset = -0.5f;
@@ -89,8 +99,6 @@ public class AvocadoController : MonoBehaviour {
 
     [SerializeField]
     LayerMask layerTerrain;
-
-    readonly float gravity = -9.81f;
 
     BoxCollider2D _collider;
 
@@ -113,8 +121,6 @@ public class AvocadoController : MonoBehaviour {
     internal GameObject Seed;
 
     internal float verticalVelocity;
-
-    public float jumpStartingVelocity { get; }
 
     void Start() {
         CreateStates();
