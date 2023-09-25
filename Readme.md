@@ -1,6 +1,6 @@
 # Avocado
 
-Various studies applied in Unity, C#.
+Various studies applied for a platformer game in Unity, C#.
 
 ![Avocado Throwing](./Documentation/avocado-throwing-loop.gif)
 

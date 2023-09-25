@@ -2152,6 +2152,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: CameraChild
   m_TagString: MainCamera
@@ -2277,6 +2278,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1703142586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 880d70699f244edab4f74baf56c6046a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 225358442}
+  shakeDecayPerSecond: 2
+  verticalShakeDisplacement: 1
+  horizontalShakeDisplacement: 2
+  rotationalShakeDisplacement: 20
+  fallShakeStartHeight: 3.2
+  fallShakeMaxHeight: 6
+  timeMultiplier: 30
+  noiseScale: 0.2
 --- !u!1 &564144286
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,16 +2519,7 @@ MonoBehaviour:
   followingSpeed: 3.5
   horizontalDeadZone: 0.5
   minimalDownDistance: 1.5
-  shakeDecayPerSecond: 2
-  verticalShakeDisplacement: 1
-  horizontalShakeDisplacement: 2
-  rotationalShakeDisplacement: 20
-  fallShakeStartHeight: 3.2
-  fallShakeMaxHeight: 6
   cameraChild: {fileID: 519420031}
-  timeMultiplier: 30
-  noiseScale: 0.2
-  currentShake: 0
 --- !u!4 &1703142586
 Transform:
   m_ObjectHideFlags: 0
