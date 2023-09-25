@@ -14,6 +14,9 @@ public class BetterCamera : MonoBehaviour {
     [Min(0)]
     float horizontalDeadZone = 1f;
 
+    [SerializeField]
+    float minimalDownDistance = 1f;
+
     Transform _avocado;
     Camera _camera;
 
@@ -35,7 +38,15 @@ public class BetterCamera : MonoBehaviour {
             x = Mathf.Lerp(pos.x - horizontalDeadZone, charPos.x, k) + horizontalDeadZone;
         }
 
-        transform.position = new Vector3(x, Mathf.Lerp(pos.y, charPos.y, k), pos.z);
+        float y;
+        if (pos.y - charPos.y > minimalDownDistance) {
+            y = charPos.y + minimalDownDistance;
+        }
+        else {
+            y = Mathf.Lerp(pos.y, charPos.y, k);
+        }
+
+        transform.position = new Vector3(x, y, pos.z);
     }
 
     void OnDrawGizmos() {
@@ -51,6 +62,11 @@ public class BetterCamera : MonoBehaviour {
         Gizmos.DrawLine(
             new Vector3(pos.x + horizontalDeadZone, pos.y - size, pos.z),
             new Vector3(pos.x + horizontalDeadZone, pos.y + size, pos.z)
+        );
+
+        Gizmos.DrawLine(
+            new Vector3(pos.x - horizontalDeadZone, pos.y - minimalDownDistance, pos.z),
+            new Vector3(pos.x + horizontalDeadZone, pos.y - minimalDownDistance, pos.z)
         );
     }
 }

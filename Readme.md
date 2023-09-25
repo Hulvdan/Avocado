@@ -39,6 +39,9 @@ There you can find examples of using the following:
   - [x] Jumping
   - [x] Falling
   - [x] Throwing seed
+
+![Character Controller States Diagram](./Documentation/state-machine.jpg)
+
 - [x] Good **project layout** that supports project organization. It also makes sure that nothing unnecessary goes into the build (e.g. dependency on Unity's Editor library)
 - [x] **Constant code formatting**
 - [x] A trick with not instantiating projectiles more than once per avocado controller
@@ -55,8 +58,8 @@ There you can find examples of using the following:
   - [x] Duration til reaching the top point of the jump
   - [x] Higher gravity scale while falling
 - [ ] Camera
-  - [ ] Dead zone
-  - [ ] Non-instant camera following
+  - [x] Dead zone
+  - [x] Non-instant camera following
   - [ ] Lookahead
 - [ ] Assists
   - [ ] Coyote time

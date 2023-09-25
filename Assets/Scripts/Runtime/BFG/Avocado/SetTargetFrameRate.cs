@@ -6,7 +6,7 @@ public class SetTargetFrameRate : MonoBehaviour {
     int targetFrameRate = 60;
 
     void Awake() {
-        QualitySettings.vSyncCount = 0;
+        QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = targetFrameRate;
     }
 

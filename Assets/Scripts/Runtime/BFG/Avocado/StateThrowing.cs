@@ -65,5 +65,10 @@ internal class StateThrowing : AvocadoState {
 
         SwitchState(ref avocado, AvocadoStateIndex.Movement);
     }
+
+    public override void OnNotGrounded(ref AvocadoController avocado) {
+        avocado.Animator.SetBool(HashIsThrowing, false);
+        SwitchState(ref avocado, AvocadoStateIndex.Falling);
+    }
 }
 }
