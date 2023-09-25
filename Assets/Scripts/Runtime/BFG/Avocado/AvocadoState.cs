@@ -66,11 +66,13 @@ internal abstract class AvocadoState {
         avocado.SwitchState(_states[(int)index]);
     }
 
-    protected static void UpdateHorizontalMovement(AvocadoController avocado, float acceleration) {
+    protected static void UpdateHorizontalMovement(
+        AvocadoController avocado, float maxMovementSpeed, float acceleration
+    ) {
         avocado.Rigidbody.velocity = new Vector2(
             MathfUtils.RecalculateMovement(
                 avocado.Rigidbody.velocity.x,
-                avocado.movementSpeed * avocado.MoveAxisXValue,
+                maxMovementSpeed * avocado.MoveAxisXValue,
                 acceleration
             ),
             avocado.Rigidbody.velocity.y

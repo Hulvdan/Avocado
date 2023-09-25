@@ -13,7 +13,11 @@ internal class StateThrowing : AvocadoState {
 
     public override void OnMove(ref AvocadoController avocado, float moveAxisXValueNew) {
         avocado.MoveAxisXValue = moveAxisXValueNew;
-        UpdateHorizontalMovement(avocado, avocado.movementAcceleration);
+        UpdateHorizontalMovement(
+            avocado,
+            avocado.movementSpeedWhileThrowing,
+            avocado.movementAcceleration
+        );
     }
 
     public override void OnThrowEnded(ref AvocadoController avocado) {

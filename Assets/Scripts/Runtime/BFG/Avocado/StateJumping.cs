@@ -21,13 +21,17 @@ internal class StateJumping : AvocadoState {
     public override void OnJumpEnded(ref AvocadoController avocado) {
         var v = avocado.Rigidbody.velocity;
         if (v.y > 0f) {
-            avocado.Rigidbody.velocity = new Vector2(v.x, v.y / 3f);
+            avocado.Rigidbody.velocity = new Vector2(v.x, v.y / avocado.jumpCutoff);
         }
     }
 
     public override void OnMove(ref AvocadoController avocado, float moveAxisXValueNew) {
         avocado.MoveAxisXValue = moveAxisXValueNew;
-        UpdateHorizontalMovement(avocado, avocado.airMovementAcceleration);
+        UpdateHorizontalMovement(
+            avocado,
+            avocado.movementSpeed,
+            avocado.airMovementAcceleration
+        );
     }
 
     public override void Update(ref AvocadoController avocado) {

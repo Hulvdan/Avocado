@@ -31,7 +31,11 @@ internal class StateFalling : AvocadoState {
 
     public override void OnMove(ref AvocadoController avocado, float moveAxisXValueNew) {
         avocado.MoveAxisXValue = moveAxisXValueNew;
-        UpdateHorizontalMovement(avocado, avocado.airMovementAcceleration);
+        UpdateHorizontalMovement(
+            avocado,
+            avocado.movementSpeed,
+            avocado.airMovementAcceleration
+        );
     }
 
     public override void OnGrounded(ref AvocadoController avocado) {

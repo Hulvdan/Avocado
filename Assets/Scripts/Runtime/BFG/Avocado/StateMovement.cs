@@ -25,7 +25,11 @@ internal class StateMovement : AvocadoState {
         avocado.Animator.SetBool(AvocadoAnimatorConsts.HashIsWalking, moveAxisXValueNew != 0f);
 
         avocado.MoveAxisXValue = moveAxisXValueNew;
-        UpdateHorizontalMovement(avocado, avocado.movementAcceleration);
+        UpdateHorizontalMovement(
+            avocado,
+            avocado.movementSpeed,
+            avocado.movementAcceleration
+        );
     }
 
     public override void OnNotGrounded(ref AvocadoController avocado) {
