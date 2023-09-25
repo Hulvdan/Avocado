@@ -354,7 +354,7 @@ MonoBehaviour:
   fallingSpeedIncreaseMaxScale: 3
   maxVerticalSpeed: 15
   groundCheckOffset: 0.5
-  groundCheckHorizontalOffset: 0.35
+  groundCheckHorizontalOffset: 0.425
   raycastDistance: 0.1
   layerTerrain:
     serializedVersion: 2
