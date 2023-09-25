@@ -11,6 +11,32 @@ internal class StateThrowing : AvocadoState {
         avocado.Animator.SetBool(HashIsThrowing, true);
     }
 
+    public override void OnMove(ref AvocadoController avocado, float moveAxisXValueNew) {
+        avocado.MoveAxisXValue = moveAxisXValueNew;
+        if (avocado.MoveAxisXValue != 0f) {
+            var cachedTransform = avocado.transform;
+            var position = cachedTransform.position;
+
+            position = new Vector3(
+                position.x + avocado.movementSpeedWhileThrowing * avocado.MoveAxisXValue,
+                position.y,
+                position.z
+            );
+
+            cachedTransform.position = position;
+        }
+
+        if (avocado.MoveAxisXValue != 0f) {
+            var localScale = avocado.transform.localScale;
+            localScale = new Vector3(
+                Mathf.Sign(avocado.MoveAxisXValue) * Mathf.Abs(localScale.x),
+                localScale.y,
+                localScale.z
+            );
+            avocado.transform.localScale = localScale;
+        }
+    }
+
     public override void OnThrowEnded(ref AvocadoController avocado) {
         avocado.Animator.SetBool(HashIsThrowing, false);
 

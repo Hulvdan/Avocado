@@ -67,7 +67,11 @@ public class AvocadoController : MonoBehaviour {
     [Header("Movement")]
     [SerializeField]
     [Min(0)]
-    internal float movementSpeed = 1f;
+    public float movementSpeed = 1f;
+
+    [SerializeField]
+    [Min(0)]
+    public float movementSpeedWhileThrowing;
 
     [SerializeField]
     [Min(0)]

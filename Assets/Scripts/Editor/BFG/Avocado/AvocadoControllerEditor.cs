@@ -5,7 +5,11 @@ namespace Editor.BFG.Avocado {
 [CustomEditor(typeof(AvocadoController))]
 public class AvocadoControllerEditor : UnityEditor.Editor {
     public override void OnInspectorGUI() {
-        var maxVerticalSpeed = (target as AvocadoController).maxVerticalSpeed;
+        base.OnInspectorGUI();
+
+        var controller = target as AvocadoController;
+
+        var maxVerticalSpeed = controller!.maxVerticalSpeed;
         if (GameManager.InitialJumpVelocity > maxVerticalSpeed) {
             EditorGUILayout.HelpBox(
                 $"Max Vertical Speed clamped at \"{maxVerticalSpeed}\", " +
@@ -14,7 +18,12 @@ public class AvocadoControllerEditor : UnityEditor.Editor {
             );
         }
 
-        base.OnInspectorGUI();
+        if (controller.movementSpeedWhileThrowing > controller.movementSpeed) {
+            EditorGUILayout.HelpBox(
+                "Movement Speed While Throwing should not be bigger than regular Movement Speed",
+                MessageType.Warning
+            );
+        }
     }
 }
 }
