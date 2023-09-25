@@ -2,11 +2,17 @@
 
 Various studies applied in Unity, C#.
 
-![Avocado Throwing](/Documentation/avocado-throwing-loop.gif)
+![Avocado Throwing](./Documentation/avocado-throwing-loop.gif)
 
 ## Rationale
 
-This is a project where I applied in action my studies of the following resources:
+This project was done for educational and entertainment purposes.
+
+Also, it could help with assessing the quality of my code during interviews.
+
+## What I did
+
+I applied my studies of the following resources:
 
 - [Book. Game Programming Patterns](https://gameprogrammingpatterns.com/) - Bob Nystrom
 
@@ -16,12 +22,56 @@ This is a project where I applied in action my studies of the following resource
 
 - [Article. Unity — Project Structure Best Practices!](https://sam-16930.medium.com/unity-project-structure-a694792cefed) - Samuel Asher Rivello
 
+- [Video. Math for Game Programmers: Building a Better Jump](https://www.youtube.com/watch?v=hG9SzQxaCm8) - at 2016 GDC talk, by Kyle Pittman
+
+- [Video. How to Make a Good 2D Camera](https://www.youtube.com/watch?v=TdWFzpgnljs) - Game Maker's Toolkit
+
 ## Study results
 
 There you can find examples of using the following:
 
-- **Decoupling** input handling from logic
-- **State** design pattern for character controller
-- Good **project layout** ensuring that supports project organization. It also makes sure that nothing unnecessary goes into the build (e.g. dependency on Unity's Editor library)
-- **Constant code formatting**
-- A trick with not instantiating projectiles more than once per player
+- [x] **Throwing seed!**
+- [x] **Decoupling** input handling from logic
+- [x] **State** design pattern for the character controller
+  - [x] Movement
+    - [x] Idle
+    - [x] Running
+  - [x] Jumping
+  - [x] Falling
+  - [x] Throwing seed
+- [x] Good **project layout** that supports project organization. It also makes sure that nothing unnecessary goes into the build (e.g. dependency on Unity's Editor library)
+- [x] **Constant code formatting**
+- [x] A trick with not instantiating projectiles more than once per avocado controller
+
+![Gravity and initial jump's velocity for achieving jump of specific duration and height](./Documentation/jump-formula.jpg)
+
+- [x] :arrow_up: I got formulas of gravity and initial velocity for achieving a jump of specific duration and height
+- [ ] Movement
+  - [x] Instant movement
+  - [ ] Max movement speed
+  - [ ] Acceleration speed
+  - [ ] Brake speed
+- [ ] Jumping
+  - [ ] Air acceleration
+  - [ ] Air control
+  - [ ] Air brake
+  - [ ] Jump cutoff
+  - [ ] Duration til reaching the top point of the jump
+- [ ] Camera
+  - [ ] Dead zone
+  - [ ] Non-instant camera following
+  - [ ] Lookahead
+- [ ] Assists
+  - [ ] Coyote time
+  - [ ] Buffering inputs
+  - [x] Max falling velocity
+- [ ] Juice
+  - [ ] Particles
+    - [ ] While running
+    - [ ] On jump
+    - [ ] On grounded
+  - [ ] SFX
+    - [ ] While running
+    - [ ] On jump
+    - [ ] On grounded
+- [ ] Enemies
