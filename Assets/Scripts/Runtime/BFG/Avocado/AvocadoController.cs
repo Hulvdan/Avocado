@@ -21,7 +21,6 @@ public class AnimationClipOverrides : List<KeyValuePair<AnimationClip, Animation
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(BoxCollider2D))]
 public class AvocadoController : MonoBehaviour {
     [Header("Throwing")]
     [SerializeField]
@@ -93,15 +92,14 @@ public class AvocadoController : MonoBehaviour {
     float groundCheckOffset = -0.5f;
 
     [SerializeField]
+    [Min(0)]
+    float groundCheckHorizontalOffset = 0.5f;
+
+    [SerializeField]
     float raycastDistance = 0.7f;
 
     [SerializeField]
     LayerMask layerTerrain;
-
-    BoxCollider2D _collider;
-
-    float _groundCheckOffsetFromCenterLeft;
-    float _groundCheckOffsetFromCenterRight;
 
     AvocadoState _state;
     AvocadoState[] _states;
@@ -122,11 +120,6 @@ public class AvocadoController : MonoBehaviour {
 
     void Start() {
         CreateStates();
-
-        _collider = GetComponent<BoxCollider2D>();
-        var size = _collider.size;
-        _groundCheckOffsetFromCenterLeft = -size.x / 2;
-        _groundCheckOffsetFromCenterRight = size.x / 2;
 
         Rigidbody = GetComponent<Rigidbody2D>();
 
@@ -163,24 +156,17 @@ public class AvocadoController : MonoBehaviour {
     }
 
     void OnDrawGizmos() {
-        if (_collider == null) {
-            _collider = GetComponent<BoxCollider2D>();
-        }
-
-        var size = _collider.size;
-        _groundCheckOffsetFromCenterLeft = -size.x / 2;
-        _groundCheckOffsetFromCenterRight = size.x / 2;
-
-        var from1 = transform.position
-                    + Vector3.right * _groundCheckOffsetFromCenterLeft
+        var pos = transform.position;
+        var from1 = pos
+                    + Vector3.right * groundCheckHorizontalOffset
                     + Vector3.down * groundCheckOffset;
-        var from2 = transform.position
-                    + Vector3.right * _groundCheckOffsetFromCenterRight
+        var from2 = pos
+                    - Vector3.right * groundCheckHorizontalOffset
                     + Vector3.down * groundCheckOffset;
 
         Gizmos.color = Color.magenta;
-        Gizmos.DrawRay(from1, Vector3.down);
-        Gizmos.DrawRay(from2, Vector3.down);
+        Gizmos.DrawLine(from1, from1 + Vector3.down * raycastDistance);
+        Gizmos.DrawLine(from2, from2 + Vector3.down * raycastDistance);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
@@ -193,10 +179,10 @@ public class AvocadoController : MonoBehaviour {
     void UpdateIsGrounded() {
         var pos = transform.position;
         var from1 = pos
-                    + Vector3.right * _groundCheckOffsetFromCenterLeft
+                    + Vector3.right * groundCheckHorizontalOffset
                     + Vector3.down * groundCheckOffset;
         var from2 = pos
-                    + Vector3.right * _groundCheckOffsetFromCenterRight
+                    - Vector3.right * groundCheckHorizontalOffset
                     + Vector3.down * groundCheckOffset;
 
         var res1 = Physics2D.Raycast(from1, Vector2.down, raycastDistance, layerTerrain);
