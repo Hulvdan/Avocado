@@ -27,28 +27,7 @@ internal class StateJumping : AvocadoState {
 
     public override void OnMove(ref AvocadoController avocado, float moveAxisXValueNew) {
         avocado.MoveAxisXValue = moveAxisXValueNew;
-        if (avocado.MoveAxisXValue != 0f) {
-            var cachedTransform = avocado.transform;
-            var position = cachedTransform.position;
-
-            position = new Vector3(
-                position.x + avocado.movementSpeed * avocado.MoveAxisXValue,
-                position.y,
-                position.z
-            );
-
-            cachedTransform.position = position;
-        }
-
-        if (avocado.MoveAxisXValue != 0f) {
-            var localScale = avocado.transform.localScale;
-            localScale = new Vector3(
-                Mathf.Sign(avocado.MoveAxisXValue) * Mathf.Abs(localScale.x),
-                localScale.y,
-                localScale.z
-            );
-            avocado.transform.localScale = localScale;
-        }
+        UpdateHorizontalMovement(avocado, avocado.airMovementAcceleration);
     }
 
     public override void Update(ref AvocadoController avocado) {

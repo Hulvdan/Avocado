@@ -1,9 +1,5 @@
-﻿using UnityEngine;
-
-namespace BFG.Avocado {
+﻿namespace BFG.Avocado {
 internal class StateMovement : AvocadoState {
-    float _moveAxisXValue;
-
     public StateMovement(AvocadoState[] states) : base(states) {
     }
 
@@ -28,29 +24,8 @@ internal class StateMovement : AvocadoState {
     public override void OnMove(ref AvocadoController avocado, float moveAxisXValueNew) {
         avocado.Animator.SetBool(AvocadoAnimatorConsts.HashIsWalking, moveAxisXValueNew != 0f);
 
-        _moveAxisXValue = moveAxisXValueNew;
-        if (_moveAxisXValue != 0f) {
-            var cachedTransform = avocado.transform;
-            var position = cachedTransform.position;
-
-            position = new Vector3(
-                position.x + avocado.movementSpeed * _moveAxisXValue,
-                position.y,
-                position.z
-            );
-
-            cachedTransform.position = position;
-        }
-
-        if (_moveAxisXValue != 0f) {
-            var localScale = avocado.transform.localScale;
-            localScale = new Vector3(
-                Mathf.Sign(_moveAxisXValue) * Mathf.Abs(localScale.x),
-                localScale.y,
-                localScale.z
-            );
-            avocado.transform.localScale = localScale;
-        }
+        avocado.MoveAxisXValue = moveAxisXValueNew;
+        UpdateHorizontalMovement(avocado, avocado.movementAcceleration);
     }
 
     public override void OnNotGrounded(ref AvocadoController avocado) {

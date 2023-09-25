@@ -46,17 +46,14 @@ There you can find examples of using the following:
 ![Gravity and initial jump's velocity for achieving jump of specific duration and height](./Documentation/jump-formula.jpg)
 
 - [x] :arrow_up: I got formulas of gravity and initial velocity for achieving a jump of specific duration and height
-- [ ] Movement
-  - [x] Instant movement
-  - [ ] Max movement speed
-  - [ ] Acceleration speed
-  - [ ] Brake speed
-- [ ] Jumping
-  - [ ] Air acceleration
-  - [ ] Air control
-  - [ ] Air brake
-  - [ ] Jump cutoff
-  - [ ] Duration til reaching the top point of the jump
+- [x] Movement
+  - [x] Max movement speed
+  - [x] Acceleration speed
+- [x] Jumping
+  - [x] Slower horizontal acceleration while mid-air
+  - [x] Jump cutoff
+  - [x] Duration til reaching the top point of the jump
+  - [x] Higher gravity scale while falling
 - [ ] Camera
   - [ ] Dead zone
   - [ ] Non-instant camera following

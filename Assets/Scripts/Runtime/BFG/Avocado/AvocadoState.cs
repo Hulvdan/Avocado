@@ -1,4 +1,6 @@
-﻿namespace BFG.Avocado {
+﻿using UnityEngine;
+
+namespace BFG.Avocado {
 internal abstract class AvocadoState {
     readonly AvocadoState[] _states;
 
@@ -62,6 +64,27 @@ internal abstract class AvocadoState {
         // Debug.Log($"Switching to \"{stateName}\" state");
 
         avocado.SwitchState(_states[(int)index]);
+    }
+
+    protected static void UpdateHorizontalMovement(AvocadoController avocado, float acceleration) {
+        avocado.Rigidbody.velocity = new Vector2(
+            MathfUtils.RecalculateMovement(
+                avocado.Rigidbody.velocity.x,
+                avocado.movementSpeed * avocado.MoveAxisXValue,
+                acceleration
+            ),
+            avocado.Rigidbody.velocity.y
+        );
+
+        if (avocado.Rigidbody.velocity.x != 0f) {
+            var localScale = avocado.transform.localScale;
+            localScale = new Vector3(
+                Mathf.Sign(avocado.Rigidbody.velocity.x) * Mathf.Abs(localScale.x),
+                localScale.y,
+                localScale.z
+            );
+            avocado.transform.localScale = localScale;
+        }
     }
 }
 }
