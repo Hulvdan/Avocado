@@ -19,6 +19,8 @@ public class AnimationClipOverrides : List<KeyValuePair<AnimationClip, Animation
     }
 }
 
+internal delegate void OnAvocadoGrounded(float height);
+
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class AvocadoController : MonoBehaviour {
@@ -123,7 +125,10 @@ public class AvocadoController : MonoBehaviour {
     internal AnimationClipOverrides ClipOverrides;
     internal bool HasSeed = true;
 
+    internal float highestVerticalPosition;
+
     internal float MoveAxisXValue;
+    internal OnAvocadoGrounded OnAvocadoGrounded;
     internal Rigidbody2D Rigidbody;
 
     internal GameObject Seed;
@@ -133,6 +138,7 @@ public class AvocadoController : MonoBehaviour {
     void Start() {
         CreateStates();
 
+        highestVerticalPosition = transform.position.y;
         Rigidbody = GetComponent<Rigidbody2D>();
 
         _state = _states[0];

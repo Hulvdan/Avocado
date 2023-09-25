@@ -24,6 +24,8 @@ I applied my studies of the following resources:
 
 - [Video. Math for Game Programmers: Building a Better Jump](https://www.youtube.com/watch?v=hG9SzQxaCm8) - at 2016 GDC talk, by Kyle Pittman
 
+- [Video. Math for Game Programmers: Juicing Your Cameras With Math](https://www.youtube.com/watch?v=tu-Qe66AvtY) - at 2016 GDC talk, by Squirrel Eiserloh
+
 - [Video. How to Make a Good 2D Camera](https://www.youtube.com/watch?v=TdWFzpgnljs) - Game Maker's Toolkit
 
 ## Study results
@@ -66,6 +68,7 @@ There you can find examples of using the following:
   - [ ] Buffering inputs
   - [x] Max falling velocity
 - [ ] Juice
+  - [x] Camera Shake on fall. Used **SimplexNoise** to simulate Perlin noise
   - [ ] Particles
     - [ ] While running
     - [ ] On jump

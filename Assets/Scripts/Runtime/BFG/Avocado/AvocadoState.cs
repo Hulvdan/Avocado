@@ -37,9 +37,16 @@ internal abstract class AvocadoState {
     }
 
     public virtual void OnNotGrounded(ref AvocadoController avocado) {
+        avocado.highestVerticalPosition = Mathf.Max(
+            avocado.highestVerticalPosition,
+            avocado.transform.position.y
+        );
     }
 
     public virtual void OnGrounded(ref AvocadoController avocado) {
+        var y = avocado.transform.position.y;
+        avocado.OnAvocadoGrounded?.Invoke(avocado.highestVerticalPosition - y);
+        avocado.highestVerticalPosition = y;
     }
 
     protected void SwitchState(ref AvocadoController avocado, AvocadoStateIndex index) {
