@@ -2,10 +2,10 @@
 
 namespace BFG.Avocado {
 internal static class AvocadoAnimatorConsts {
-    public static readonly string AvocadoIdleState = "AvocadoIdle";
-    public static readonly string AvocadoWalkState = "AvocadoWalk";
-    public static readonly string AvocadoJumpState = "AvocadoJump";
-    public static readonly string AvocadoFallState = "AvocadoFall";
+    public const string AvocadoIdleState = "AvocadoIdle";
+    public const string AvocadoWalkState = "AvocadoWalk";
+    public const string AvocadoJumpState = "AvocadoJump";
+    public const string AvocadoFallState = "AvocadoFall";
 
     public static readonly int HashIsWalking = Animator.StringToHash("IsWalking");
     public static readonly int HashIsThrowing = Animator.StringToHash("IsThrowing");
