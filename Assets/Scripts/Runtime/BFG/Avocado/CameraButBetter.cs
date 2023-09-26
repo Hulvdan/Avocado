@@ -46,6 +46,12 @@ public class BetterCamera : MonoBehaviour {
             y = Mathf.Lerp(pos.y, charPos.y, k);
         }
 
+        // Fixing camera position sticking to vertical dead zone after character grounding
+        // ReSharper disable once CompareOfFloatsByEqualityOperator
+        if (y == pos.y) {
+            y = Mathf.Lerp(pos.y, charPos.y, k);
+        }
+
         transform.position = new Vector3(x, y, pos.z);
     }
 
