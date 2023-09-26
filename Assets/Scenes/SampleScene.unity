@@ -2292,9 +2292,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 225358442}
   shakeDecayPerSecond: 2
-  verticalShakeDisplacement: 1
-  horizontalShakeDisplacement: 2
-  rotationalShakeDisplacement: 20
+  verticalShakeDisplacement: 1.3
+  horizontalShakeDisplacement: 2.6
+  rotationalShakeDisplacement: 5
   fallShakeStartHeight: 3.2
   fallShakeMaxHeight: 6
   timeMultiplier: 30
