@@ -14,10 +14,10 @@ internal abstract class AvocadoState {
     public virtual void OnExit(ref AvocadoController avocado) {
     }
 
-    public virtual void OnJumpStarted(ref AvocadoController avocado) {
+    public virtual void OnHoldingActionJumpStarted(ref AvocadoController avocado) {
     }
 
-    public virtual void OnJumpEnded(ref AvocadoController avocado) {
+    public virtual void OnHoldingActionJumpEnded(ref AvocadoController avocado) {
     }
 
     // public virtual void OnGravity(ref AvocadoController avocado, float gravity) {
@@ -33,7 +33,7 @@ internal abstract class AvocadoState {
     public virtual void OnThrow(ref AvocadoController avocado) {
     }
 
-    public virtual void OnThrowEnded(ref AvocadoController avocado) {
+    public virtual void OnThrowAnimationEnded(ref AvocadoController avocado) {
     }
 
     /// <summary>

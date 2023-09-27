@@ -30,10 +30,10 @@ public class PlayerInputHandler : MonoBehaviour {
         }
 
         if (_actionJump.WasPressedThisFrame() && _actionJump.IsPressed()) {
-            avocadoController.OnJumpStarted();
+            avocadoController.OnHoldingActionJumpStarted();
         }
         else if (_actionJump.WasReleasedThisFrame()) {
-            avocadoController.OnJumpEnded();
+            avocadoController.OnHoldingActionJumpEnded();
         }
     }
 

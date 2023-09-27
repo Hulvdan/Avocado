@@ -20,7 +20,7 @@ internal class StateThrowing : AvocadoState {
         );
     }
 
-    public override void OnThrowEnded(ref AvocadoController avocado) {
+    public override void OnThrowAnimationEnded(ref AvocadoController avocado) {
         avocado.Animator.SetBool(HashIsThrowing, false);
 
         var cachedTransform = avocado.transform;

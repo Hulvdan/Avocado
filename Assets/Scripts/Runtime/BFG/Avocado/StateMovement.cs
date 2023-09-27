@@ -17,7 +17,7 @@ internal class StateMovement : AvocadoState {
         }
     }
 
-    public override void OnJumpStarted(ref AvocadoController avocado) {
+    public override void OnHoldingActionJumpStarted(ref AvocadoController avocado) {
         SwitchState(ref avocado, AvocadoStateIndex.Jumping);
     }
 

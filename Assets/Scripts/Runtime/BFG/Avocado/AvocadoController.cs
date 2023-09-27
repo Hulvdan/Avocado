@@ -24,7 +24,7 @@ internal delegate void OnAvocadoGrounded(float height);
 
 internal delegate void OnAvocadoJustGrounded(float height);
 
-internal delegate void OnAvocadoJump();
+internal delegate void OnAvocadoJumped();
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -107,6 +107,7 @@ public class AvocadoController : MonoBehaviour {
     [Min(0)]
     public float maxVerticalSpeed = 1f;
 
+    [Header("Falling Check")]
     [SerializeField]
     float groundCheckOffset = -0.5f;
 
@@ -137,10 +138,6 @@ public class AvocadoController : MonoBehaviour {
     [Min(0)]
     float fallSoundMaxHeight = 6f;
 
-    [SerializeField]
-    [Min(0)]
-    float fallSoundDistanceMultiplier = 1f;
-
     AvocadoState _state;
     AvocadoState[] _states;
 
@@ -156,8 +153,7 @@ public class AvocadoController : MonoBehaviour {
     internal float MoveAxisXValue;
 
     internal OnAvocadoGrounded OnAvocadoGrounded;
-
-    internal OnAvocadoJump OnAvocadoJumped;
+    internal OnAvocadoJumped OnAvocadoJumped;
     internal OnAvocadoJustGrounded OnAvocadoJustGrounded;
     internal Rigidbody2D Rigidbody;
 
@@ -187,7 +183,7 @@ public class AvocadoController : MonoBehaviour {
         OnAvocadoJumped += () => { onJumpWWiseEvent.Post(gameObject); };
         OnAvocadoJustGrounded += height => {
             var c = (height - fallSoundStartHeight) / (fallSoundMaxHeight - fallSoundStartHeight);
-            var distance = 1 - Mathf.Clamp(c, 0, 1) * fallSoundDistanceMultiplier;
+            var distance = 1 - Mathf.Clamp(c, 0, 1);
             if (distance >= 1) {
                 return;
             }
@@ -280,14 +276,14 @@ public class AvocadoController : MonoBehaviour {
         _state.OnMove(ref me, x);
     }
 
-    public void OnJumpStarted() {
+    public void OnHoldingActionJumpStarted() {
         var me = this;
-        _state.OnJumpStarted(ref me);
+        _state.OnHoldingActionJumpStarted(ref me);
     }
 
-    public void OnJumpEnded() {
+    public void OnHoldingActionJumpEnded() {
         var me = this;
-        _state.OnJumpEnded(ref me);
+        _state.OnHoldingActionJumpEnded(ref me);
     }
 
     public void Throw() {
@@ -295,9 +291,9 @@ public class AvocadoController : MonoBehaviour {
         _state.OnThrow(ref me);
     }
 
-    void OnThrowEnded() {
+    void OnThrowAnimationEnded() {
         var me = this;
-        _state.OnThrowEnded(ref me);
+        _state.OnThrowAnimationEnded(ref me);
     }
 
     void OnSeedPickup() {
