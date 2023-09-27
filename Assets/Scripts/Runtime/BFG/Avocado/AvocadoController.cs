@@ -90,6 +90,10 @@ public class AvocadoController : MonoBehaviour {
     internal float coyoteTime = .2f;
 
     [SerializeField]
+    [Min(0)]
+    internal float inputsBufferingTime = .2f;
+
+    [SerializeField]
     [Min(1)]
     public float jumpCutoff = 3f;
 
@@ -147,10 +151,14 @@ public class AvocadoController : MonoBehaviour {
     [Min(0)]
     float fallSoundMaxHeight = 6f;
 
+    float _jumpCommandBufferingElapsed;
+    float _jumpReleaseCommandBufferingElapsed;
+
     AvocadoState _state;
     AvocadoState[] _states;
 
     bool _wasGroundedOnPreviousFrame = true;
+
     internal Animator Animator;
     internal AnimatorOverrideController AnimatorOverrideController;
 
@@ -161,6 +169,9 @@ public class AvocadoController : MonoBehaviour {
 
     internal float MoveAxisXValue;
     internal float MovementStateFallingElapsed;
+
+    internal bool NeedToJump;
+    internal bool NeedToReleaseJump;
 
     internal OnAvocadoGrounded OnAvocadoGrounded;
     internal OnAvocadoJumped OnAvocadoJumped;
@@ -212,7 +223,32 @@ public class AvocadoController : MonoBehaviour {
     void Update() {
         var me = this;
         _state.Update(ref me);
-        // _state.OnGravity(ref me, gravity);
+
+        if (NeedToJump) {
+            if (_jumpCommandBufferingElapsed >= inputsBufferingTime) {
+                NeedToJump = false;
+                NeedToReleaseJump = false;
+            }
+            else if (_state.OnHoldingActionJumpStarted(ref me)) {
+                NeedToJump = false;
+                NeedToReleaseJump = false;
+            }
+            else {
+                _jumpCommandBufferingElapsed += Time.deltaTime;
+            }
+        }
+
+        if (NeedToReleaseJump) {
+            if (_jumpReleaseCommandBufferingElapsed >= inputsBufferingTime) {
+                NeedToReleaseJump = false;
+            }
+            else if (_state.OnHoldingActionJumpEnded(ref me)) {
+                NeedToReleaseJump = false;
+            }
+            else {
+                _jumpReleaseCommandBufferingElapsed += Time.deltaTime;
+            }
+        }
     }
 
     void FixedUpdate() {
@@ -260,6 +296,7 @@ public class AvocadoController : MonoBehaviour {
 
         var isGrounded = res1.collider != null || res2.collider != null;
         var me = this;
+
         if (isGrounded) {
             _state.OnGrounded(ref me);
             if (!_wasGroundedOnPreviousFrame) {
@@ -291,12 +328,18 @@ public class AvocadoController : MonoBehaviour {
 
     public void OnHoldingActionJumpStarted() {
         var me = this;
-        _state.OnHoldingActionJumpStarted(ref me);
+        if (!_state.OnHoldingActionJumpStarted(ref me)) {
+            NeedToJump = true;
+            _jumpCommandBufferingElapsed = 0;
+        }
     }
 
     public void OnHoldingActionJumpEnded() {
         var me = this;
-        _state.OnHoldingActionJumpEnded(ref me);
+        if (!_state.OnHoldingActionJumpEnded(ref me)) {
+            NeedToReleaseJump = true;
+            _jumpReleaseCommandBufferingElapsed = 0;
+        }
     }
 
     public void Throw() {

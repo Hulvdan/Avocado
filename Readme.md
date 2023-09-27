@@ -78,9 +78,9 @@ There you can find examples of using the following:
   - [x] Non-instant camera following
   - [ ] Lookahead
   - [ ] Pixel perfect
-- [ ] Assists
+- [x] Assists
   - [x] Coyote time
-  - [ ] Buffering inputs
+  - [x] Buffering inputs
   - [x] Max falling velocity
 - [ ] Juice
   - [x] Camera Shake on fall. Used **SimplexNoise** to simulate Perlin noise

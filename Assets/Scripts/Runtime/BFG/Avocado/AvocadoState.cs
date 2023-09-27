@@ -14,15 +14,13 @@ internal abstract class AvocadoState {
     public virtual void OnExit(ref AvocadoController avocado) {
     }
 
-    public virtual void OnHoldingActionJumpStarted(ref AvocadoController avocado) {
+    public virtual bool OnHoldingActionJumpStarted(ref AvocadoController avocado) {
+        return false;
     }
 
-    public virtual void OnHoldingActionJumpEnded(ref AvocadoController avocado) {
+    public virtual bool OnHoldingActionJumpEnded(ref AvocadoController avocado) {
+        return false;
     }
-
-    // public virtual void OnGravity(ref AvocadoController avocado, float gravity) {
-    //     avocado.Rigidbody.MovePosition(avocado.Rigidbody.position + Vector2.up * gravity);
-    // }
 
     public virtual void OnMove(ref AvocadoController avocado, float moveAxisValue) {
     }

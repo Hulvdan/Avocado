@@ -42,5 +42,11 @@ internal class StateFalling : AvocadoState {
         base.OnGrounded(ref avocado);
         SwitchState(ref avocado, AvocadoStateIndex.Movement);
     }
+
+    public override bool OnHoldingActionJumpEnded(ref AvocadoController avocado) {
+        avocado.NeedToJump = false;
+        avocado.NeedToReleaseJump = false;
+        return true;
+    }
 }
 }
