@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{1C4BAB34-F161-43F5-F630-4D1675456A95}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{5D45418C-1769-EB04-A2A3-9288C75B3A8E}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -20,11 +20,10 @@
 			</Plugins>
 			<Busses>
 				<Bus Id="393239870" Name="SFX"/>
-				<Bus Id="1460929204" Name="OnGrounded"/>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="2228651116" Type="User" Language="SFX" Hash="{E0C4C0C1-C6C6-DD62-FD69-362C15F1A1A0}">
+		<SoundBank Id="2228651116" Type="User" Language="SFX" Hash="{FFF1EB6A-4724-E473-B35C-03EBA5693C9B}">
 			<ShortName>Main_SoundBank</ShortName>
 			<Path>Main_SoundBank.bnk</Path>
 			<Media>
@@ -32,13 +31,13 @@
 					<ShortName>Footstep.wav</ShortName>
 					<CachePath>SFX/Footstep_10C4C929.wem</CachePath>
 				</File>
-				<File Id="628652190" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>OnGrounded.wav</ShortName>
-					<CachePath>SFX/OnGrounded_10C4C929.wem</CachePath>
+				<File Id="580418788" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>45_Landing_01.wav</ShortName>
+					<CachePath>SFX/45_Landing_01_10C4C929.wem</CachePath>
 				</File>
-				<File Id="829324425" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>OnJumped.wav</ShortName>
-					<CachePath>SFX/OnJumped_10C4C929.wem</CachePath>
+				<File Id="996429674" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>30_Jump_03.wav</ShortName>
+					<CachePath>SFX/30_Jump_03_10C4C929.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -47,18 +46,18 @@
 						<MediaRef Id="281369812"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1460929204" Name="OnGrounded" MaxAttenuation="1" DurationType="OneShot" DurationMin="0.7450567" DurationMax="0.7450567">
+				<Event Id="1460929204" Name="OnGrounded" MaxAttenuation="1" DurationType="OneShot" DurationMin="0.6666667" DurationMax="0.6666667">
 					<MediaRefs>
-						<MediaRef Id="628652190"/>
+						<MediaRef Id="580418788"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="2726436657" Name="OnJumped" DurationType="OneShot" DurationMin="0.15031746" DurationMax="0.15031746">
+				<Event Id="2726436657" Name="OnJumped" DurationType="OneShot" DurationMin="0.86507934" DurationMax="0.86507934">
 					<MediaRefs>
-						<MediaRef Id="829324425"/>
+						<MediaRef Id="996429674"/>
 					</MediaRefs>
 				</Event>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{6C059372-DAF7-29FC-4277-163587A9DC27}</FileHash>
+	<FileHash>{85E9F6C2-537C-290C-82E4-26177C0CA6B8}</FileHash>
 </SoundBanksInfo>

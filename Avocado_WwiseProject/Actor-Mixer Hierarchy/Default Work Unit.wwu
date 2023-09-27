@@ -163,6 +163,159 @@
 						<ActiveSource Name="Footstep" ID="{71EBCB05-303F-412F-A7F2-316735E7456F}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="12_Step_wood_03" ID="{8D7C8ECA-819F-479D-BF79-CE6DA86BE638}" ShortID="1070008598">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E55E1180-9DA1-40E3-BC1C-05C864C5FE39}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX" ID="{FF1ED89F-DDDC-4678-A4E6-F9DCC0AB331A}" WorkUnitID="{812D3C1B-A25B-49DB-9901-897F6F72526F}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="12_Step_wood_03" ID="{54627EB7-353A-4148-B3EB-A3A313A9843D}">
+							<Language>SFX</Language>
+							<AudioFile>12_Step_wood_03.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="561096046"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="12_Step_wood_03" ID="{54627EB7-353A-4148-B3EB-A3A313A9843D}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="30_Jump_03" ID="{11BBAB43-7780-42AA-BDD1-6D8EFAC5036D}" ShortID="1034395856">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E55E1180-9DA1-40E3-BC1C-05C864C5FE39}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX" ID="{FF1ED89F-DDDC-4678-A4E6-F9DCC0AB331A}" WorkUnitID="{812D3C1B-A25B-49DB-9901-897F6F72526F}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="30_Jump_03" ID="{D00A648C-46F2-4BB4-A604-803452529F90}">
+							<Language>SFX</Language>
+							<AudioFile>30_Jump_03.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="996429674"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="30_Jump_03" ID="{D00A648C-46F2-4BB4-A604-803452529F90}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="45_Landing_01" ID="{7AE7611D-824A-4DC4-B5BF-604DA1392442}" ShortID="544477294">
+					<ReferenceList>
+						<Reference Name="Attenuation">
+							<Custom>
+								<Attenuation Name="Attenuation (Custom)" ID="{1A7DAF39-2549-4467-9321-B8B81E74FAC2}" ShortID="128477176">
+									<PropertyList>
+										<Property Name="RadiusMax" Type="Real64" Value="1"/>
+									</PropertyList>
+									<CurveUsageInfoList>
+										<VolumeDryUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+												<Curve Name="VolumeDry" ID="{784C7F21-C151-4357-B021-76D40EC3EA68}">
+													<PropertyList>
+														<Property Name="Flags" Type="int32" Value="3"/>
+													</PropertyList>
+													<PointList>
+														<Point>
+															<XPos>0</XPos>
+															<YPos>0</YPos>
+															<Flags>5</Flags>
+															<SegmentShape>Log3</SegmentShape>
+														</Point>
+														<Point>
+															<XPos>1</XPos>
+															<YPos>-200</YPos>
+															<Flags>37</Flags>
+														</Point>
+													</PointList>
+												</Curve>
+											</CurveUsageInfo>
+										</VolumeDryUsage>
+										<VolumeWetGameUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+										</VolumeWetGameUsage>
+										<VolumeWetUserUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+										</VolumeWetUserUsage>
+										<LowPassFilterUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</LowPassFilterUsage>
+										<HighPassFilterUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</HighPassFilterUsage>
+										<SpreadUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</SpreadUsage>
+										<FocusUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+										</FocusUsage>
+										<ObstructionVolumeUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</ObstructionVolumeUsage>
+										<ObstructionLPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</ObstructionLPFUsage>
+										<ObstructionHPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</ObstructionHPFUsage>
+										<OcclusionVolumeUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</OcclusionVolumeUsage>
+										<OcclusionLPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</OcclusionLPFUsage>
+										<OcclusionHPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</OcclusionHPFUsage>
+										<DiffractionVolumeUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</DiffractionVolumeUsage>
+										<DiffractionLPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</DiffractionLPFUsage>
+										<DiffractionHPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</DiffractionHPFUsage>
+										<TransmissionVolumeUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</TransmissionVolumeUsage>
+										<TransmissionLPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</TransmissionLPFUsage>
+										<TransmissionHPFUsage>
+											<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+										</TransmissionHPFUsage>
+									</CurveUsageInfoList>
+								</Attenuation>
+							</Custom>
+						</Reference>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E55E1180-9DA1-40E3-BC1C-05C864C5FE39}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX" ID="{FF1ED89F-DDDC-4678-A4E6-F9DCC0AB331A}" WorkUnitID="{812D3C1B-A25B-49DB-9901-897F6F72526F}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="45_Landing_01" ID="{AA3B6B27-90A2-45E9-950A-52752ACD9649}">
+							<Language>SFX</Language>
+							<AudioFile>45_Landing_01.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="580418788"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="45_Landing_01" ID="{AA3B6B27-90A2-45E9-950A-52752ACD9649}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

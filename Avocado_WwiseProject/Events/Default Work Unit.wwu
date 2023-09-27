@@ -6,9 +6,23 @@
 				<Event Name="OnJumped" ID="{E72D1099-1C4C-497D-B108-9DD4D72163EA}">
 					<ChildrenList>
 						<Action Name="" ID="{E731BFC6-42B0-433D-A83B-6F929FF09FFC}" ShortID="101702993">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="OnJumped" ID="{AEF9E47B-A31E-4D0D-B5CA-2488B3790B68}" WorkUnitID="{E004F50F-B67A-44E6-99D3-651285BDE1CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{13623F2A-C3C0-415B-9626-1AA2D519F78E}" ShortID="913073779">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="30_Jump_03" ID="{11BBAB43-7780-42AA-BDD1-6D8EFAC5036D}" WorkUnitID="{E004F50F-B67A-44E6-99D3-651285BDE1CC}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>
@@ -19,6 +33,11 @@
 						<Action Name="" ID="{C03F8C39-F2AC-4410-9F69-9B516655582B}" ShortID="922991026">
 							<PropertyList>
 								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
@@ -27,9 +46,33 @@
 							</ReferenceList>
 						</Action>
 						<Action Name="" ID="{54D0E6AF-A6A1-4D94-B707-0A7BF59804F3}" ShortID="426280349">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="OnGrounded" ID="{0193DDE2-9EEA-47A7-A042-C8DF8641A0EB}" WorkUnitID="{E004F50F-B67A-44E6-99D3-651285BDE1CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{7A2A3C34-A142-4504-8B8C-4AF776B3BDCE}" ShortID="756055876">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="45_Landing_01" ID="{7AE7611D-824A-4DC4-B5BF-604DA1392442}" WorkUnitID="{E004F50F-B67A-44E6-99D3-651285BDE1CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{23651D4A-E851-4AA6-AC74-4560B0E1AE21}" ShortID="103237183">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="45_Landing_01" ID="{7AE7611D-824A-4DC4-B5BF-604DA1392442}" WorkUnitID="{E004F50F-B67A-44E6-99D3-651285BDE1CC}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

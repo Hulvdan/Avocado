@@ -27,7 +27,6 @@ namespace AK
     namespace BUSSES
     {
         static const AkUniqueID MASTER_AUDIO_BUS = 3803692087U;
-        static const AkUniqueID ONGROUNDED = 1460929204U;
         static const AkUniqueID SFX = 393239870U;
     } // namespace BUSSES
 
