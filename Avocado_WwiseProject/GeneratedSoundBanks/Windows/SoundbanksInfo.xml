@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="145">
+	<RootPaths>
+		<ProjectRoot>../..</ProjectRoot>
+		<SourceFilesRoot>../../.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{AE388E4A-029B-ACC5-8AD0-24F554784279}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="393239870" Name="SFX"/>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+		</SoundBank>
+		<SoundBank Id="2228651116" Type="User" Language="SFX" Hash="{5775D524-3BD8-75A4-FEB6-364A2D49E5AF}">
+			<ShortName>Main_SoundBank</ShortName>
+			<Path>Main_SoundBank.bnk</Path>
+			<Media>
+				<File Id="281369812" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Footstep.wav</ShortName>
+					<CachePath>SFX/Footstep_10C4C929.wem</CachePath>
+				</File>
+				<File Id="628652190" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>OnGrounded.wav</ShortName>
+					<CachePath>SFX/OnGrounded_10C4C929.wem</CachePath>
+				</File>
+				<File Id="829324425" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>OnJumped.wav</ShortName>
+					<CachePath>SFX/OnJumped_10C4C929.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="2385628198" Name="Footsteps" DurationType="OneShot" DurationMin="0.6666667" DurationMax="0.6666667">
+					<MediaRefs>
+						<MediaRef Id="281369812"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1460929204" Name="OnGrounded" DurationType="OneShot" DurationMin="0.7450567" DurationMax="0.7450567">
+					<MediaRefs>
+						<MediaRef Id="628652190"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="2726436657" Name="OnJumped" DurationType="OneShot" DurationMin="0.15031746" DurationMax="0.15031746">
+					<MediaRefs>
+						<MediaRef Id="829324425"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{9A22742C-7FCC-8EC1-12EC-FECE413143F9}</FileHash>
+</SoundBanksInfo>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{085D23AD-C260-444F-B621-05ADD7776ECE}" SchemaVersion="110">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{085D23AD-C260-444F-B621-05ADD7776ECE}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="OnJumped" ID="{E72D1099-1C4C-497D-B108-9DD4D72163EA}">
+					<ChildrenList>
+						<Action Name="" ID="{E731BFC6-42B0-433D-A83B-6F929FF09FFC}" ShortID="101702993">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="OnJumped" ID="{AEF9E47B-A31E-4D0D-B5CA-2488B3790B68}" WorkUnitID="{E004F50F-B67A-44E6-99D3-651285BDE1CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="OnGrounded" ID="{291E2477-B9D7-425A-9A18-BF6F5C2CDE04}">
+					<ChildrenList>
+						<Action Name="" ID="{54D0E6AF-A6A1-4D94-B707-0A7BF59804F3}" ShortID="426280349">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="OnGrounded" ID="{0193DDE2-9EEA-47A7-A042-C8DF8641A0EB}" WorkUnitID="{E004F50F-B67A-44E6-99D3-651285BDE1CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Footsteps" ID="{E044B6D5-6150-4FB4-8668-41C9D94CE411}">
+					<ChildrenList>
+						<Action Name="" ID="{87861539-F6D4-4B41-9571-39EC0865FFED}" ShortID="989786271">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Footstep" ID="{D513C8A4-AACC-497C-A479-C7D545DDD430}" WorkUnitID="{E004F50F-B67A-44E6-99D3-651285BDE1CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

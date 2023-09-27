@@ -63,6 +63,7 @@ There you can find examples of using the following:
   - [x] Dead zone
   - [x] Non-instant camera following
   - [ ] Lookahead
+  - [ ] Pixel perfect
 - [ ] Assists
   - [ ] Coyote time
   - [ ] Buffering inputs

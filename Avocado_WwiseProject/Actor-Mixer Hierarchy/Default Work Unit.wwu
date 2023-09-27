@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E004F50F-B67A-44E6-99D3-651285BDE1CC}" SchemaVersion="110">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{E004F50F-B67A-44E6-99D3-651285BDE1CC}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="OnGrounded" ID="{0193DDE2-9EEA-47A7-A042-C8DF8641A0EB}" ShortID="569533721">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E55E1180-9DA1-40E3-BC1C-05C864C5FE39}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX" ID="{FF1ED89F-DDDC-4678-A4E6-F9DCC0AB331A}" WorkUnitID="{812D3C1B-A25B-49DB-9901-897F6F72526F}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="OnGrounded" ID="{7B712380-58AC-4459-A918-18DBF8BB5949}">
+							<Language>SFX</Language>
+							<AudioFile>OnGrounded.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="628652190"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="OnGrounded" ID="{7B712380-58AC-4459-A918-18DBF8BB5949}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="OnJumped" ID="{AEF9E47B-A31E-4D0D-B5CA-2488B3790B68}" ShortID="96041436">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E55E1180-9DA1-40E3-BC1C-05C864C5FE39}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX" ID="{FF1ED89F-DDDC-4678-A4E6-F9DCC0AB331A}" WorkUnitID="{812D3C1B-A25B-49DB-9901-897F6F72526F}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="OnJumped" ID="{52FFBCCF-7AE6-4C9F-957B-E18018589876}">
+							<Language>SFX</Language>
+							<AudioFile>OnJumped.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="829324425"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="OnJumped" ID="{52FFBCCF-7AE6-4C9F-957B-E18018589876}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Footstep" ID="{D513C8A4-AACC-497C-A479-C7D545DDD430}" ShortID="74719810">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E55E1180-9DA1-40E3-BC1C-05C864C5FE39}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="SFX" ID="{FF1ED89F-DDDC-4678-A4E6-F9DCC0AB331A}" WorkUnitID="{812D3C1B-A25B-49DB-9901-897F6F72526F}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Footstep" ID="{71EBCB05-303F-412F-A7F2-316735E7456F}">
+							<PropertyList>
+								<Property Name="VolumeOffset" Type="Real64">
+									<ValueList>
+										<Value>12</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Footstep.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="281369812"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Footstep" ID="{71EBCB05-303F-412F-A7F2-316735E7456F}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

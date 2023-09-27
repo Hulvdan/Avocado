@@ -1,0 +1,10 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1460929204	OnGrounded			\Default Work Unit\OnGrounded	
+	2385628198	Footsteps			\Default Work Unit\Footsteps	
+	2726436657	OnJumped			\Default Work Unit\OnJumped	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	281369812	Footstep	C:\Users\user\dev\_unity\Avocado\Avocado_WwiseProject\.cache\Mac\SFX\Footstep_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footstep		117696
+	628652190	OnGrounded	C:\Users\user\dev\_unity\Avocado\Avocado_WwiseProject\.cache\Mac\SFX\OnGrounded_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\OnGrounded		65810
+	829324425	OnJumped	C:\Users\user\dev\_unity\Avocado\Avocado_WwiseProject\.cache\Mac\SFX\OnJumped_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\OnJumped		13354
+

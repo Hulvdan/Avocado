@@ -38,7 +38,7 @@ internal class StateFalling : AvocadoState {
         );
     }
 
-    public override void OnGrounded(ref AvocadoController avocado) {
+    public override void OnGroundFound(ref AvocadoController avocado) {
         SwitchState(ref avocado, AvocadoStateIndex.Movement);
     }
 }

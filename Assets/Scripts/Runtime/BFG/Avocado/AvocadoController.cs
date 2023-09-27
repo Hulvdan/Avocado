@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Event = AK.Wwise.Event;
 
 namespace BFG.Avocado {
 public class AnimationClipOverrides : List<KeyValuePair<AnimationClip, AnimationClip>> {
@@ -20,6 +21,8 @@ public class AnimationClipOverrides : List<KeyValuePair<AnimationClip, Animation
 }
 
 internal delegate void OnAvocadoGrounded(float height);
+
+internal delegate void OnAvocadoJump();
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -115,6 +118,12 @@ public class AvocadoController : MonoBehaviour {
     [SerializeField]
     LayerMask layerTerrain;
 
+    [SerializeField]
+    Event onJumpWWiseEvent;
+
+    [SerializeField]
+    Event onGroundedWWiseEvent;
+
     AvocadoState _state;
     AvocadoState[] _states;
 
@@ -128,7 +137,10 @@ public class AvocadoController : MonoBehaviour {
     internal float highestVerticalPosition;
 
     internal float MoveAxisXValue;
+
     internal OnAvocadoGrounded OnAvocadoGrounded;
+
+    internal OnAvocadoJump OnAvocadoJumped;
     internal Rigidbody2D Rigidbody;
 
     internal GameObject Seed;
@@ -155,6 +167,13 @@ public class AvocadoController : MonoBehaviour {
 
         var me = this;
         _state.OnEnter(ref me);
+
+        OnAvocadoJumped += () => { onJumpWWiseEvent.Post(gameObject); };
+        OnAvocadoGrounded += height => {
+            if (height > 2.2f) {
+                onGroundedWWiseEvent.Post(gameObject);
+            }
+        };
     }
 
     void Update() {
@@ -209,18 +228,17 @@ public class AvocadoController : MonoBehaviour {
         var isGrounded = res1.collider != null || res2.collider != null;
         var me = this;
         if (isGrounded) {
-            _state.OnGrounded(ref me);
+            _state.OnGroundFound(ref me);
+            if (!_wasGroundedOnPreviousFrame) {
+                _state.OnGrounded(ref me);
+            }
         }
         else {
-            _state.OnNotGrounded(ref me);
+            _state.OnNoGroundFound(ref me);
+            if (_wasGroundedOnPreviousFrame) {
+                _state.OnNotGrounded(ref me);
+            }
         }
-
-        // if (isGrounded && !_wasGroundedOnPreviousFrame) {
-        //     _state.OnGrounded(ref me);
-        // }
-        // else if (!isGrounded && _wasGroundedOnPreviousFrame) {
-        //     _state.OnNotGrounded(ref me);
-        // }
 
         _wasGroundedOnPreviousFrame = isGrounded;
     }

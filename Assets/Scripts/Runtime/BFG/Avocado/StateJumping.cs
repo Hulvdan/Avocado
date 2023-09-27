@@ -12,6 +12,8 @@ internal class StateJumping : AvocadoState {
         );
         // Debug.Log($"StateJumping: InitialJumpVelocity: {GameManager.InitialJumpVelocity}");
         avocado.Animator.SetBool(AvocadoAnimatorConsts.HashIsJumping, true);
+
+        avocado.OnAvocadoJumped?.Invoke();
     }
 
     public override void OnExit(ref AvocadoController avocado) {
