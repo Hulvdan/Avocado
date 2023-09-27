@@ -16,6 +16,16 @@
 				</Event>
 				<Event Name="OnGrounded" ID="{291E2477-B9D7-425A-9A18-BF6F5C2CDE04}">
 					<ChildrenList>
+						<Action Name="" ID="{C03F8C39-F2AC-4410-9F69-9B516655582B}" ShortID="922991026">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="OnGrounded" ID="{0193DDE2-9EEA-47A7-A042-C8DF8641A0EB}" WorkUnitID="{E004F50F-B67A-44E6-99D3-651285BDE1CC}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
 						<Action Name="" ID="{54D0E6AF-A6A1-4D94-B707-0A7BF59804F3}" ShortID="426280349">
 							<ReferenceList>
 								<Reference Name="Target">

@@ -28,6 +28,20 @@ I applied my studies of the following resources:
 
 - [Video. How to Make a Good 2D Camera](https://www.youtube.com/watch?v=TdWFzpgnljs) - Game Maker's Toolkit
 
+- Wwise
+
+  - [Documentation. Wwise Fundamentals](https://www.audiokinetic.com/fr/library/edge/?source=WwiseFundamentalApproach&id=wwise_fundamentals)
+
+  - [Video. Wwise Tutorial - Integrating Wwise Into Unity](https://www.youtube.com/watch?v=qEfQtAM1z4o) - Crosby Nelson
+
+  - [Video. Wwise Tutorial - Posting Events With Custom Scripts In Unity](https://www.youtube.com/watch?v=_voQkyAOckI) - Crosby Nelson
+
+  - [Video. Game Audio with Unity and Wwise Part 2: Let there be Sound!](https://www.youtube.com/watch?v=i2gPkgqVHf4) -  Michael G Wagner
+
+  - [Video. Wwise Tutorial - Playing A Sound In Unity](https://www.youtube.com/watch?v=5Ta1PZmVXik) - Crosby Nelson
+
+  - [Video. Wwise-101 - Lesson 4 - Applying Distance Attenuation](https://www.youtube.com/watch?v=F1eMxm4tu8s) - Audiokinetic
+
 ## Study results
 
 There you can find examples of using the following:
@@ -74,8 +88,8 @@ There you can find examples of using the following:
     - [ ] While running
     - [ ] On jump
     - [ ] On grounded
-  - [ ] SFX
-    - [ ] While running
-    - [ ] On jump
-    - [ ] On grounded
+  - [ ] SFX using Wwise
+    - [ ] Sounds of footsteps
+    - [x] On jump
+    - [x] On grounded with different volume depending on falling height
 - [ ] Enemies

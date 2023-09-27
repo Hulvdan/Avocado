@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{5D45418C-1769-EB04-A2A3-9288C75B3A8E}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{1C4BAB34-F161-43F5-F630-4D1675456A95}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -20,10 +20,11 @@
 			</Plugins>
 			<Busses>
 				<Bus Id="393239870" Name="SFX"/>
+				<Bus Id="1460929204" Name="OnGrounded"/>
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="2228651116" Type="User" Language="SFX" Hash="{5775D524-3BD8-75A4-FEB6-364A2D49E5AF}">
+		<SoundBank Id="2228651116" Type="User" Language="SFX" Hash="{E0C4C0C1-C6C6-DD62-FD69-362C15F1A1A0}">
 			<ShortName>Main_SoundBank</ShortName>
 			<Path>Main_SoundBank.bnk</Path>
 			<Media>
@@ -46,7 +47,7 @@
 						<MediaRef Id="281369812"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1460929204" Name="OnGrounded" DurationType="OneShot" DurationMin="0.7450567" DurationMax="0.7450567">
+				<Event Id="1460929204" Name="OnGrounded" MaxAttenuation="1" DurationType="OneShot" DurationMin="0.7450567" DurationMax="0.7450567">
 					<MediaRefs>
 						<MediaRef Id="628652190"/>
 					</MediaRefs>
@@ -59,5 +60,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{9AC912F2-B3F2-2761-7B73-6A4E8A4EFBB9}</FileHash>
+	<FileHash>{6C059372-DAF7-29FC-4277-163587A9DC27}</FileHash>
 </SoundBanksInfo>

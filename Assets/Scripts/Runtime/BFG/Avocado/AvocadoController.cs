@@ -22,6 +22,8 @@ public class AnimationClipOverrides : List<KeyValuePair<AnimationClip, Animation
 
 internal delegate void OnAvocadoGrounded(float height);
 
+internal delegate void OnAvocadoJustGrounded(float height);
+
 internal delegate void OnAvocadoJump();
 
 [RequireComponent(typeof(Animator))]
@@ -124,6 +126,21 @@ public class AvocadoController : MonoBehaviour {
     [SerializeField]
     Event onGroundedWWiseEvent;
 
+    [SerializeField]
+    GameObject onGroundedEventEmitter;
+
+    [SerializeField]
+    [Min(0)]
+    float fallSoundStartHeight = 3.2f;
+
+    [SerializeField]
+    [Min(0)]
+    float fallSoundMaxHeight = 6f;
+
+    [SerializeField]
+    [Min(0)]
+    float fallSoundDistanceMultiplier = 1f;
+
     AvocadoState _state;
     AvocadoState[] _states;
 
@@ -134,23 +151,22 @@ public class AvocadoController : MonoBehaviour {
     internal AnimationClipOverrides ClipOverrides;
     internal bool HasSeed = true;
 
-    internal float highestVerticalPosition;
+    internal float HighestVerticalPosition;
 
     internal float MoveAxisXValue;
 
     internal OnAvocadoGrounded OnAvocadoGrounded;
 
     internal OnAvocadoJump OnAvocadoJumped;
+    internal OnAvocadoJustGrounded OnAvocadoJustGrounded;
     internal Rigidbody2D Rigidbody;
 
     internal GameObject Seed;
 
-    internal float verticalVelocity;
-
     void Start() {
         CreateStates();
 
-        highestVerticalPosition = transform.position.y;
+        HighestVerticalPosition = transform.position.y;
         Rigidbody = GetComponent<Rigidbody2D>();
 
         _state = _states[0];
@@ -169,10 +185,18 @@ public class AvocadoController : MonoBehaviour {
         _state.OnEnter(ref me);
 
         OnAvocadoJumped += () => { onJumpWWiseEvent.Post(gameObject); };
-        OnAvocadoGrounded += height => {
-            if (height > 2.2f) {
-                onGroundedWWiseEvent.Post(gameObject);
+        OnAvocadoJustGrounded += height => {
+            var c = (height - fallSoundStartHeight) / (fallSoundMaxHeight - fallSoundStartHeight);
+            var distance = 1 - Mathf.Clamp(c, 0, 1) * fallSoundDistanceMultiplier;
+            if (distance >= 1) {
+                return;
             }
+
+            var localPos = onGroundedEventEmitter.transform.localPosition;
+            onGroundedEventEmitter.transform.localPosition = new Vector3(
+                localPos.x, localPos.y, distance
+            );
+            onGroundedWWiseEvent.Post(onGroundedEventEmitter);
         };
     }
 
@@ -228,15 +252,15 @@ public class AvocadoController : MonoBehaviour {
         var isGrounded = res1.collider != null || res2.collider != null;
         var me = this;
         if (isGrounded) {
-            _state.OnGroundFound(ref me);
+            _state.OnGrounded(ref me);
             if (!_wasGroundedOnPreviousFrame) {
-                _state.OnGrounded(ref me);
+                _state.OnJustGrounded(ref me);
             }
         }
         else {
-            _state.OnNoGroundFound(ref me);
+            _state.OnNotGrounded(ref me);
             if (_wasGroundedOnPreviousFrame) {
-                _state.OnNotGrounded(ref me);
+                _state.OnJustNotGrounded(ref me);
             }
         }
 

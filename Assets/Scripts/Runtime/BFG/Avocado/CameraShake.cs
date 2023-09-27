@@ -78,7 +78,8 @@ public class CameraShake : MonoBehaviour {
     }
 
     void OnAvocadoGrounded(float height) {
-        AddShake((height - fallShakeStartHeight) * fallShakeStartHeight / fallShakeMaxHeight);
+        var c = (height - fallShakeStartHeight) / (fallShakeMaxHeight - fallShakeStartHeight);
+        AddShake(c);
     }
 }
 }

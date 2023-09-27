@@ -37,34 +37,36 @@ internal abstract class AvocadoState {
     }
 
     /// <summary>
-    ///     Called once avocado grounds.
+    ///     Called every frame if avocado is grounded.
     /// </summary>
     public virtual void OnGrounded(ref AvocadoController avocado) {
+        var y = avocado.transform.position.y;
+        avocado.OnAvocadoGrounded?.Invoke(avocado.HighestVerticalPosition - y);
     }
 
     /// <summary>
-    ///     Called once avocado is not grounded.
+    ///     Called once avocado grounds.
     /// </summary>
-    public virtual void OnNotGrounded(ref AvocadoController avocado) {
+    public virtual void OnJustGrounded(ref AvocadoController avocado) {
+        var y = avocado.transform.position.y;
+        avocado.OnAvocadoJustGrounded?.Invoke(avocado.HighestVerticalPosition - y);
+        avocado.HighestVerticalPosition = y;
     }
 
     /// <summary>
     ///     Called every frame if avocado is not grounded.
     /// </summary>
-    public virtual void OnNoGroundFound(ref AvocadoController avocado) {
-        avocado.highestVerticalPosition = Mathf.Max(
-            avocado.highestVerticalPosition,
+    public virtual void OnNotGrounded(ref AvocadoController avocado) {
+        avocado.HighestVerticalPosition = Mathf.Max(
+            avocado.HighestVerticalPosition,
             avocado.transform.position.y
         );
     }
 
     /// <summary>
-    ///     Called every frame if avocado is grounded.
+    ///     Called once avocado is not grounded.
     /// </summary>
-    public virtual void OnGroundFound(ref AvocadoController avocado) {
-        var y = avocado.transform.position.y;
-        avocado.OnAvocadoGrounded?.Invoke(avocado.highestVerticalPosition - y);
-        avocado.highestVerticalPosition = y;
+    public virtual void OnJustNotGrounded(ref AvocadoController avocado) {
     }
 
     protected void SwitchState(ref AvocadoController avocado, AvocadoStateIndex index) {
