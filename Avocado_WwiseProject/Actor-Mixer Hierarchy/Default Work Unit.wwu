@@ -164,6 +164,21 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="12_Step_wood_03" ID="{8D7C8ECA-819F-479D-BF79-CE6DA86BE638}" ShortID="1070008598">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{E94B7706-616D-4D6E-8D3B-72FA52B30A31}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="300"/>
+											<Property Name="Min" Type="Real64" Value="-300"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E55E1180-9DA1-40E3-BC1C-05C864C5FE39}"/>

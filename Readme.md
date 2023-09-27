@@ -89,7 +89,8 @@ There you can find examples of using the following:
     - [ ] On jump
     - [ ] On grounded
   - [ ] SFX using Wwise
-    - [ ] Sounds of footsteps
+    - [x] Footsteps
     - [x] On jump
-    - [x] On grounded with different volume depending on falling height
+    - [x] On grounded with different volume
+    - [ ] Throwing
 - [ ] Enemies

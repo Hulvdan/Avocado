@@ -23,13 +23,13 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="2228651116" Type="User" Language="SFX" Hash="{FFF1EB6A-4724-E473-B35C-03EBA5693C9B}">
+		<SoundBank Id="2228651116" Type="User" Language="SFX" Hash="{95374D4F-F6E7-F1F2-B235-2D2FC0604D7C}">
 			<ShortName>Main_SoundBank</ShortName>
 			<Path>Main_SoundBank.bnk</Path>
 			<Media>
-				<File Id="281369812" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Footstep.wav</ShortName>
-					<CachePath>SFX/Footstep_10C4C929.wem</CachePath>
+				<File Id="561096046" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>12_Step_wood_03.wav</ShortName>
+					<CachePath>SFX/12_Step_wood_03_10C4C929.wem</CachePath>
 				</File>
 				<File Id="580418788" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>45_Landing_01.wav</ShortName>
@@ -41,9 +41,9 @@
 				</File>
 			</Media>
 			<Events>
-				<Event Id="2385628198" Name="Footsteps" DurationType="OneShot" DurationMin="0.6666667" DurationMax="0.6666667">
+				<Event Id="2385628198" Name="Footsteps" DurationType="OneShot" DurationMin="0.56059766" DurationMax="0.7928047">
 					<MediaRefs>
-						<MediaRef Id="281369812"/>
+						<MediaRef Id="561096046"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="1460929204" Name="OnGrounded" MaxAttenuation="1" DurationType="OneShot" DurationMin="0.6666667" DurationMax="0.6666667">
@@ -59,5 +59,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{CE46C982-999A-D287-40B8-61AA76CAD882}</FileHash>
+	<FileHash>{407E576E-C763-633B-6618-69F68D4B7497}</FileHash>
 </SoundBanksInfo>

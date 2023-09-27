@@ -26,6 +26,8 @@ internal delegate void OnAvocadoJustGrounded(float height);
 
 internal delegate void OnAvocadoJumped();
 
+internal delegate void OnFootstepObserver();
+
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class AvocadoController : MonoBehaviour {
@@ -122,6 +124,9 @@ public class AvocadoController : MonoBehaviour {
     LayerMask layerTerrain;
 
     [SerializeField]
+    Event OnFootstepWWiseEvent;
+
+    [SerializeField]
     Event onJumpWWiseEvent;
 
     [SerializeField]
@@ -155,6 +160,8 @@ public class AvocadoController : MonoBehaviour {
     internal OnAvocadoGrounded OnAvocadoGrounded;
     internal OnAvocadoJumped OnAvocadoJumped;
     internal OnAvocadoJustGrounded OnAvocadoJustGrounded;
+    internal OnFootstepObserver OnFootstepObserver;
+
     internal Rigidbody2D Rigidbody;
 
     internal GameObject Seed;
@@ -180,6 +187,7 @@ public class AvocadoController : MonoBehaviour {
         var me = this;
         _state.OnEnter(ref me);
 
+        OnFootstepObserver += () => { OnFootstepWWiseEvent.Post(gameObject); };
         OnAvocadoJumped += () => { onJumpWWiseEvent.Post(gameObject); };
         OnAvocadoJustGrounded += height => {
             var c = (height - fallSoundStartHeight) / (fallSoundMaxHeight - fallSoundStartHeight);
@@ -294,6 +302,11 @@ public class AvocadoController : MonoBehaviour {
     void OnThrowAnimationEnded() {
         var me = this;
         _state.OnThrowAnimationEnded(ref me);
+    }
+
+    void OnFootstep() {
+        var me = this;
+        OnFootstepObserver?.Invoke();
     }
 
     void OnSeedPickup() {

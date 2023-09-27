@@ -83,7 +83,7 @@
 						<Action Name="" ID="{87861539-F6D4-4B41-9571-39EC0865FFED}" ShortID="989786271">
 							<ReferenceList>
 								<Reference Name="Target">
-									<ObjectRef Name="Footstep" ID="{D513C8A4-AACC-497C-A479-C7D545DDD430}" WorkUnitID="{E004F50F-B67A-44E6-99D3-651285BDE1CC}"/>
+									<ObjectRef Name="12_Step_wood_03" ID="{8D7C8ECA-819F-479D-BF79-CE6DA86BE638}" WorkUnitID="{E004F50F-B67A-44E6-99D3-651285BDE1CC}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

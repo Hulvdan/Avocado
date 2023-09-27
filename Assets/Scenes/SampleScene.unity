@@ -363,6 +363,10 @@ MonoBehaviour:
   layerTerrain:
     serializedVersion: 2
     m_Bits: 64
+  OnFootstepWWiseEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 62a4c689b14d7144292471fbd6cb54b7, type: 2}
   onJumpWWiseEvent:
     idInternal: 0
     valueGuidInternal: 
@@ -372,9 +376,8 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 893fea71b5a1ccb40b845878187ab7a5, type: 2}
   onGroundedEventEmitter: {fileID: 1766632056}
-  fallSoundStartHeight: 3.2
+  fallSoundStartHeight: 0
   fallSoundMaxHeight: 6
-  fallSoundDistanceMultiplier: 1
 --- !u!114 &225358443
 MonoBehaviour:
   m_ObjectHideFlags: 0

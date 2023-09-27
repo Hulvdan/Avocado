@@ -4,7 +4,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2726436657	OnJumped			\Default Work Unit\OnJumped	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	281369812	Footstep	C:\Users\user\dev\_unity\Avocado\Avocado_WwiseProject\.cache\Mac\SFX\Footstep_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Footstep		117696
+	561096046	12_Step_wood_03	C:\Users\user\dev\_unity\Avocado\Avocado_WwiseProject\.cache\Mac\SFX\12_Step_wood_03_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\12_Step_wood_03		117696
 	580418788	45_Landing_01	C:\Users\user\dev\_unity\Avocado\Avocado_WwiseProject\.cache\Mac\SFX\45_Landing_01_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\45_Landing_01		117696
 	996429674	30_Jump_03	C:\Users\user\dev\_unity\Avocado\Avocado_WwiseProject\.cache\Mac\SFX\30_Jump_03_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\30_Jump_03		152696
 
