@@ -351,6 +351,7 @@ MonoBehaviour:
   movementSpeed: 5
   movementAcceleration: 0.5
   airMovementAcceleration: 0.2
+  coyoteTime: 0.2
   jumpCutoff: 3
   movementSpeedWhileThrowing: 1
   fallingSpeedIncreaseDuration: 1
@@ -363,15 +364,15 @@ MonoBehaviour:
   layerTerrain:
     serializedVersion: 2
     m_Bits: 64
-  OnFootstepWWiseEvent:
+  onFootstepWwiseEvent:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 62a4c689b14d7144292471fbd6cb54b7, type: 2}
-  onJumpWWiseEvent:
+  onJumpWwiseEvent:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: eec55f9401af46a43936c8dd79907556, type: 2}
-  onGroundedWWiseEvent:
+  onGroundedWwiseEvent:
     idInternal: 0
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 893fea71b5a1ccb40b845878187ab7a5, type: 2}
@@ -2711,7 +2712,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1766632057}
   - component: {fileID: 1766632058}
-  - component: {fileID: 1766632059}
   m_Layer: 3
   m_Name: OnGroundedEventEmitter
   m_TagString: Untagged
@@ -2756,20 +2756,6 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0, z: 0}
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
---- !u!114 &1766632059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1766632056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e55e11598e05f9345be86c018505c993, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outerRadius: 6
-  innerRadius: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

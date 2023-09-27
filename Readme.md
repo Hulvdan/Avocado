@@ -79,7 +79,7 @@ There you can find examples of using the following:
   - [ ] Lookahead
   - [ ] Pixel perfect
 - [ ] Assists
-  - [ ] Coyote time
+  - [x] Coyote time
   - [ ] Buffering inputs
   - [x] Max falling velocity
 - [ ] Juice
@@ -88,9 +88,10 @@ There you can find examples of using the following:
     - [ ] While running
     - [ ] On jump
     - [ ] On grounded
-  - [ ] SFX using Wwise
+  - [ ] SFX using **Wwise**
     - [x] Footsteps
     - [x] On jump
     - [x] On grounded with different volume
     - [ ] Throwing
+    - [ ] On seed colliding with terrain
 - [ ] Enemies

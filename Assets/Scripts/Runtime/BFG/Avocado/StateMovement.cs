@@ -1,10 +1,14 @@
-﻿namespace BFG.Avocado {
+﻿using UnityEngine;
+
+namespace BFG.Avocado {
 internal class StateMovement : AvocadoState {
     public StateMovement(AvocadoState[] states) : base(states) {
     }
 
     public override void OnEnter(ref AvocadoController avocado) {
         avocado.Animator.SetBool(AvocadoAnimatorConsts.HashIsWalking, avocado.MoveAxisXValue != 0f);
+
+        avocado.MovementStateFallingElapsed = 0;
     }
 
     public override void OnExit(ref AvocadoController avocado) {
@@ -32,9 +36,22 @@ internal class StateMovement : AvocadoState {
         );
     }
 
+    public override void OnJustGrounded(ref AvocadoController avocado) {
+        base.OnJustGrounded(ref avocado);
+
+        avocado.MovementStateFallingElapsed = 0;
+    }
+
     public override void OnNotGrounded(ref AvocadoController avocado) {
         base.OnNotGrounded(ref avocado);
-        SwitchState(ref avocado, AvocadoStateIndex.Falling);
+
+        if (avocado.MovementStateFallingElapsed < avocado.coyoteTime) {
+            avocado.MovementStateFallingElapsed += Time.deltaTime;
+        }
+        else {
+            avocado.MovementStateFallingElapsed = 0;
+            SwitchState(ref avocado, AvocadoStateIndex.Falling);
+        }
     }
 }
 }

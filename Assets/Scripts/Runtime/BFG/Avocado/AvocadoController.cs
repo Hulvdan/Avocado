@@ -86,6 +86,10 @@ public class AvocadoController : MonoBehaviour {
     public float airMovementAcceleration = .5f;
 
     [SerializeField]
+    [Min(0)]
+    internal float coyoteTime = .2f;
+
+    [SerializeField]
     [Min(1)]
     public float jumpCutoff = 3f;
 
@@ -124,13 +128,13 @@ public class AvocadoController : MonoBehaviour {
     LayerMask layerTerrain;
 
     [SerializeField]
-    Event OnFootstepWWiseEvent;
+    Event onFootstepWwiseEvent;
 
     [SerializeField]
-    Event onJumpWWiseEvent;
+    Event onJumpWwiseEvent;
 
     [SerializeField]
-    Event onGroundedWWiseEvent;
+    Event onGroundedWwiseEvent;
 
     [SerializeField]
     GameObject onGroundedEventEmitter;
@@ -156,6 +160,7 @@ public class AvocadoController : MonoBehaviour {
     internal float HighestVerticalPosition;
 
     internal float MoveAxisXValue;
+    internal float MovementStateFallingElapsed;
 
     internal OnAvocadoGrounded OnAvocadoGrounded;
     internal OnAvocadoJumped OnAvocadoJumped;
@@ -187,8 +192,8 @@ public class AvocadoController : MonoBehaviour {
         var me = this;
         _state.OnEnter(ref me);
 
-        OnFootstepObserver += () => { OnFootstepWWiseEvent.Post(gameObject); };
-        OnAvocadoJumped += () => { onJumpWWiseEvent.Post(gameObject); };
+        OnFootstepObserver += () => { onFootstepWwiseEvent.Post(gameObject); };
+        OnAvocadoJumped += () => { onJumpWwiseEvent.Post(gameObject); };
         OnAvocadoJustGrounded += height => {
             var c = (height - fallSoundStartHeight) / (fallSoundMaxHeight - fallSoundStartHeight);
             var distance = 1 - Mathf.Clamp(c, 0, 1);
@@ -200,7 +205,7 @@ public class AvocadoController : MonoBehaviour {
             onGroundedEventEmitter.transform.localPosition = new Vector3(
                 localPos.x, localPos.y, distance
             );
-            onGroundedWWiseEvent.Post(onGroundedEventEmitter);
+            onGroundedWwiseEvent.Post(onGroundedEventEmitter);
         };
     }
 
@@ -305,7 +310,6 @@ public class AvocadoController : MonoBehaviour {
     }
 
     void OnFootstep() {
-        var me = this;
         OnFootstepObserver?.Invoke();
     }
 
