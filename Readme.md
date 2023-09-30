@@ -59,7 +59,7 @@ There you can find examples of using the following:
 ![Character Controller States Diagram](./Documentation/state-machine.jpg)
 
 - [x] Good **project layout** that supports project organization. It also makes sure that nothing unnecessary goes into the build (e.g. dependency on Unity's Editor library)
-- [x] **Constant code formatting**
+- [x] Consistent code formatting
 - [x] A trick with not instantiating projectiles more than once per avocado controller
 
 ![Gravity and initial jump's velocity for achieving jump of specific duration and height](./Documentation/jump-formula.jpg)
